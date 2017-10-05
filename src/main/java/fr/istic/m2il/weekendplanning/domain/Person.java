@@ -1,8 +1,16 @@
 package fr.istic.m2il.weekendplanning.domain;
 
 
+import javax.persistence.Column;
+import javax.validation.constraints.Size;
+
 public class Person {
+
+    @Size(max = 50)
+    @Column(name = "first_name", length = 50)
     private String firstName;
+    @Size(max = 50)
+    @Column(name = "last_name", length = 50)
     private String lastName;
 
     public String getFirstName() {
