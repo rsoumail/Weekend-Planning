@@ -17,5 +17,5 @@ Possibilité pour l'user de proposer un nouv activité
 
 ## remarques
 
-Pour une activité il y a des contraintes meteologique et geologique. Exemple:
-	Activité voile : un peu de vent, coté meteo mais il faut de la flote coté lieu 
+Pour une activité il y a des contraintes meteologiques et geologiques. Exemple:
+	Activité voil : un peu de vent coté meteo mais, il faut de la flote coté lieu sinon il faut que notre BD contient uniquement des activités sans contraintes geologique
