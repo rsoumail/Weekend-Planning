@@ -15,4 +15,7 @@ Cron (tache bash mardi mercredi)
 Possibilité pour l'user de proposer un nouv activité
 
 
+## remarques
 
+Pour une activité il y a des contraintes meteologique et geologique. Exemple:
+	Activité voile : un peu de vent, coté meteo mais il faut de la flote coté lieu 
