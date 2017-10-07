@@ -29,7 +29,7 @@ public class Place implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+	 
 	@ManyToMany(mappedBy="places")
 	public List<Person> getPersons() {
 		return persons;

@@ -53,7 +53,7 @@ public class Person {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
+     
     @ManyToMany
 	public List<Activity> getActivity() {
 		return activity;

@@ -78,7 +78,7 @@ public class User extends Person implements Serializable {
     public void setLogin(String login) {
         this.login = login;
     }
-
+ 
     public String getPassword() {
         return password;
     }
