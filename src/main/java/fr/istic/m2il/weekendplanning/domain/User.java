@@ -55,7 +55,7 @@ public class User extends Person implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Activity> activities = new ArrayList<>();
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
