@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name = "activity")
 //@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Activity implements Serializable {
-	
+
     private static final long serialVersionUID = 1L;
 
     @NotNull
@@ -71,5 +71,4 @@ public class Activity implements Serializable {
                 "name='" + name + '\'' +
                 "}";
     }
->>>>>>> Modification pour amélioration de l'API
 }
