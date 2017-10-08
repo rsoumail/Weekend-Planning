@@ -29,23 +29,23 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    private final PasswordEncoder passwordEncoder;
+    //private final PasswordEncoder passwordEncoder ;
 
     private final ActivityRepository activityRepository;
 
-    private final CacheManager cacheManager;
+    //private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, ActivityRepository activityRepository, CacheManager cacheManager) {
+    public UserService(UserRepository userRepository, ActivityRepository activityRepository) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+       // this.passwordEncoder = passwordEncoder;
         this.activityRepository = activityRepository;
-        this.cacheManager = cacheManager;
+     //   this.cacheManager = cacheManager;
     }
 
     public User createUser(String login, String email,  String password, String firstName, String lastName) {
 
         User newUser = new User();
-        String encryptedPassword = passwordEncoder.encode(password);
+        /*String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
@@ -55,7 +55,7 @@ public class UserService {
  
 
         userRepository.save(newUser);
-        log.debug("Created Information for User: {}", newUser);
+        log.debug("Created Information for User: {}", newUser);*/
         return newUser;
     }
 
@@ -73,8 +73,8 @@ public class UserService {
             );
             user.setActivities(activities);
         }
-        String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
-        user.setPassword(encryptedPassword);
+        //String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
+        //user.setPassword(encryptedPassword);
         userRepository.save(user);
         log.debug("Created Information for User: {}", user);
         return user;

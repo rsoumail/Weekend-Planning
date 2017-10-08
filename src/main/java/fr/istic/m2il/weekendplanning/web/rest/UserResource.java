@@ -7,6 +7,7 @@ import fr.istic.m2il.weekendplanning.web.rest.util.HeaderUtil;
 import fr.istic.m2il.weekendplanning.web.rest.vm.ManagedUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

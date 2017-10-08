@@ -1,6 +1,6 @@
 package fr.istic.m2il.weekendplanning.service.dto;
 
-import fr.istic.m2il.weekendplanning.config.Constants;
+//import fr.istic.m2il.weekendplanning.config.Constants;
 import fr.istic.m2il.weekendplanning.domain.Activity;
 import fr.istic.m2il.weekendplanning.domain.User;
 import org.hibernate.validator.constraints.Email;
@@ -21,7 +21,7 @@ public class UserDTO {
     private String email;
 
     @NotBlank
-    @Pattern(regexp = Constants.LOGIN_REGEX)
+   // @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 50)
     private String login;
 
