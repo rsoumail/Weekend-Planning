@@ -14,37 +14,21 @@ public class Place implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue
+    private Long id;
     
-    private long id;
+   // private List<Person> persons = new ArrayList<Person>();
+    //private List<Activity> activity = new ArrayList<Activity>();
     
-    private List<Person> persons = new ArrayList<Person>();
-    private List<Activity> activity = new ArrayList<Activity>();
-    
-    
-    @Id
-    @GeneratedValue
+
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	 
-	@ManyToMany(mappedBy="places")
-	public List<Person> getPersons() {
-		return persons;
-	}
-	public void setPersons(List<Person> persons) {
-		this.persons = persons;
-	}
-	
-	@ManyToMany(mappedBy="palces")
-	public List<Activity> getActivity() {
-		return activity;
-	}
-	public void setActivity(List<Activity> activity) {
-		this.activity = activity;
-	} 
+
 
    // @ManyToMany(mappedBy="places")
    // private List<User> users = new ArrayList<User>();

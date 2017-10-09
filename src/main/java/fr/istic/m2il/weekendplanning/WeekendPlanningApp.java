@@ -1,8 +1,8 @@
 package fr.istic.m2il.weekendplanning;
 
-//import fr.istic.m2il.weekendplanning.config.ApplicationProperties;
-//import fr.istic.m2il.weekendplanning.config.DefaultProfileUtil;
-//import fr.istic.m2il.weekendplanning.config.EnvironmentConstants;
+import fr.istic.m2il.weekendplanning.config.ApplicationProperties;
+import fr.istic.m2il.weekendplanning.config.DefaultProfileUtil;
+import fr.istic.m2il.weekendplanning.config.EnvironmentConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -21,17 +21,18 @@ import java.util.Collection;
 
 //@ComponentScan
 //@EnableAutoConfiguration
-@SpringBootApplication
-//@EnableConfigurationProperties({ApplicationProperties.class})
+//@SpringBootApplication
+@EnableConfigurationProperties({ApplicationProperties.class})
+@EnableAutoConfiguration(exclude = {})
 public class WeekendPlanningApp {
 
-    //private static final Logger log = LoggerFactory.getLogger(WeekendPlanningApp.class);
+    private static final Logger log = LoggerFactory.getLogger(WeekendPlanningApp.class);
 
-    /*private final Environment env;
+    private final Environment env;
 
     public WeekendPlanningApp(Environment env) {
         this.env = env;
-    }*/
+    }
 
 
 
@@ -42,7 +43,7 @@ public class WeekendPlanningApp {
      * <p>
      * You can find more information on how profiles work with JHipster on <a href="http://www.jhipster.tech/profiles/">http://www.jhipster.tech/profiles/</a>.
      */
-    /*@PostConstruct
+    @PostConstruct
     public void initApplication() {
         Collection<String> activeProfiles = Arrays.asList(env.getActiveProfiles());
         if (activeProfiles.contains(EnvironmentConstants.SPRING_PROFILE_DEVELOPMENT) && activeProfiles.contains(EnvironmentConstants.SPRING_PROFILE_PRODUCTION)) {
@@ -53,7 +54,7 @@ public class WeekendPlanningApp {
             log.error("You have misconfigured your application! It should not " +
                     "run with both the 'dev' and 'cloud' profiles at the same time.");
         }
-    }*/
+    }
 
     /**
      * Main method, used to run the application.
@@ -62,11 +63,9 @@ public class WeekendPlanningApp {
      * @throws UnknownHostException if the local host name could not be resolved into an address
      */
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(WeekendPlanningApp.class, args);
-       /* SpringApplication app = new SpringApplication(WeekendPlanningApp.class);
-        app.run();*/
+        SpringApplication app = new SpringApplication(WeekendPlanningApp.class);
       //  SpringApplication.run(SampleDataJpaApplication.class, args);
-        /*DefaultProfileUtil.addDefaultProfile(app);
+        DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         String protocol = "http";
         if (env.getProperty("server.ssl.key-store") != null) {
@@ -83,6 +82,6 @@ public class WeekendPlanningApp {
                 protocol,
                 InetAddress.getLocalHost().getHostAddress(),
                 env.getProperty("server.port"),
-                env.getActiveProfiles());*/
+                env.getActiveProfiles());
     }
 }
