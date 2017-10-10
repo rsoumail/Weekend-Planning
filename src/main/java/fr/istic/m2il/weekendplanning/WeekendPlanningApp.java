@@ -18,7 +18,7 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Collection;
 
-//@ComponentScan
+@ComponentScan
 @EnableConfigurationProperties({ApplicationProperties.class})
 @EnableAutoConfiguration(exclude = {})
 public class WeekendPlanningApp {

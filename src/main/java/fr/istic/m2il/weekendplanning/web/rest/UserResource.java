@@ -3,17 +3,21 @@ package fr.istic.m2il.weekendplanning.web.rest;
 import fr.istic.m2il.weekendplanning.domain.User;
 import fr.istic.m2il.weekendplanning.repository.UserRepository;
 import fr.istic.m2il.weekendplanning.service.UserService;
+import fr.istic.m2il.weekendplanning.service.dto.UserDTO;
 import fr.istic.m2il.weekendplanning.web.rest.util.HeaderUtil;
+import fr.istic.m2il.weekendplanning.web.rest.util.PaginationUtil;
 import fr.istic.m2il.weekendplanning.web.rest.vm.ManagedUserVM;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -48,6 +52,7 @@ public class UserResource {
      * @return la ResponseEntity avec le status 201 (Créée) avec le contenu du nouvel utilisateur, ou avec le status 400 (Bad Request) si le login et l'adresse email sont déjà utilisés
      * @throws URISyntaxException si la synthaxe de l'URI est incorrecte
      */
+    @PostMapping("/users")
     public ResponseEntity createUser (@Valid @RequestBody ManagedUserVM managedUserVM) throws URISyntaxException{
         log.debug("REST request to save User : {}", managedUserVM);
 
@@ -76,5 +81,19 @@ public class UserResource {
     @GetMapping("/all")
     public Optional<User> get (){
         return userRepository.findOneByLogin("");
+    }
+
+    /**
+     * GET  /users : get all users.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+    @GetMapping("/users")
+    //@Timed
+    public ResponseEntity<List<UserDTO>> getAllUsers(Pageable pageable) {
+        final Page<UserDTO> page = userService.getAllManagedUsers(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }
