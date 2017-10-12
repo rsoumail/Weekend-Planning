@@ -23,7 +23,6 @@
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
-    "webpack": "^3.7.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
@@ -45,6 +44,7 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.3.3"
+    "typescript": "~2.3.3",
+    "webpack": "^3.7.1"
   }
 }
