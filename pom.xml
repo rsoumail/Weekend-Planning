@@ -167,7 +167,7 @@
                     </additionalConfig>
                 </configuration>
             </plugin>
-            <!-- Pour copier le resultat de la compilation de angular dans ressource static de spring boot -->
+            <!-- Pour copier le resultat de la compilation de angular dans resource/static de spring boot -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
@@ -179,7 +179,7 @@
                             <outputDirectory>${basedir}/target/classes/static/</outputDirectory >
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/../angular4-client/dist</directory >
+                                    <directory>${basedir}/../webapp/dist</directory >
                                 </resource>
                             </resources>
                         </configuration>
