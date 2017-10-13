@@ -7,9 +7,16 @@ import {
   Response
 } from '@angular/http';
 
+import { Observable } from 'rxjs';
+import { SERVER_API_URL } from '../../app.constants'
+
 @Injectable()
 export class RegisterService {
 
-  constructor() { }
+  constructor(private http: Http) { }
+
+  save (account: any): Observable<any> {
+    return this.http.post(SERVER_API_URL + 'acconts', account);
+  }
 
 }
