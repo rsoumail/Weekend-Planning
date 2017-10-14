@@ -10,4 +10,4 @@ import { CommonModule } from '@angular/common';
 })
 export class SharedModule { }
 
-edoisdoifosd
+tester le conflict
