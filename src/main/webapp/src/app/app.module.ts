@@ -5,7 +5,7 @@ import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SharedModule, LoginComponent } from './shared';
-import { LayoutsModule, FooterComponent} from './layouts';
+import { LayoutsModule, FooterComponent, HeaderComponent} from './layouts';
 import { AccountModule, RegisterComponent } from './account';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -28,14 +28,16 @@ const appRoutes:Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-  //  LayoutsModule,
-    AccountModule
+    LayoutsModule,
+    AccountModule,
+    SharedModule,
   ],
   declarations: [
     AppComponent,
     // DashboardComponent,
-    //LoginComponent,
-   FooterComponent
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   providers: [],
 
