@@ -1,3 +1,113 @@
-<p>
-  register works!
-</p>
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1>Création de compte</h1>
+
+            <div class="alert alert-success" *ngIf="success">
+                <strong>Votre compte a été crée !</strong>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="error">
+                <strong>Echec lors de la création d e votre compte!</strong> Veuillez réessayer.
+            </div>
+
+            <div class="alert alert-danger" *ngIf="errorUserExists">
+                <strong>Ce login est dèjà utilisé !</strong> Veuillez choisir un autre.
+            </div>
+
+            <div class="alert alert-danger" *ngIf="errorEmailExists">
+                <strong>Cette adresse email est déjà utilisé !</strong> Veuillez choisir un autre.
+            </div>
+
+            <div class="alert alert-danger" *ngIf="doNotMatch">
+                Les mots de passe ne correspondents pas !
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form name="form" role="form" (ngSubmit)="register()" #registerForm="ngForm" *ngIf="!success">
+                <div class="form-group">
+                    <label class="form-control-label" for="login">Login</label>
+                    <input type="text" class="form-control" [(ngModel)]="registerAccount.login" id="login" name="login" #login="ngModel" placeholder="Votre Login"
+                            required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
+                    <div *ngIf="login.dirty && login.invalid">
+                        <small class="form-text text-danger" *ngIf="login.errors.required">
+                            Votre login est obligatoire.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="login.errors.minlength"
+                               >
+                            Votre login doit contenir au moins un caractère.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="login.errors.maxlength"
+                               >
+                            Votre login ne peut excéder 50 caractères.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="login.errors.pattern"
+                              >
+                            Votre login ne peut contenir que des miniscules et des chiffres.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="Votre email"
+                            [(ngModel)]="registerAccount.email" minlength=5 maxlength=100 email required>
+                    <div *ngIf="email.dirty && email.invalid">
+                        <small class="form-text text-danger" *ngIf="email.errors.required"
+                               >
+                            Votre email est obligatoire.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="email.errors.invalid"
+                              >
+                            Votre email n'est pas invalide.
+                        </small>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="password">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="Mot de passe"
+                            [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
+                    <div *ngIf="password.dirty && password.invalid">
+                        <small class="form-text text-danger" *ngIf="password.errors.required"
+                               >
+                            Votre mot de passe est obligatoire.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="password.errors.minlength"
+                               >
+                            Votre mot de passe doit contenir au moins 8 charactères.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="password.errors.maxlength"
+                               >
+                            Votre mot de passe ne peut dépasser 50 charactères.
+                        </small>
+                    </div>
+                    <!--jhi-password-strength-bar [passwordToCheck]="registerAccount.password"></jhi-password-strength-bar-->
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="confirmPassword">Confirmation du mot de passe</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="Confirmer le mot de passe"
+                            [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
+                    <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
+                        <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required"
+                              >
+                            La confirmation du mot de passe est obligatoire.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.minlength"
+                             >
+                            La confirmation mot de passe doit contenir au moins 8 charactères.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.maxlength"
+                              >
+                            La confirmation mot de passe ne peut dépasser 50 charactères.
+                        </small>
+                    </div>
+                </div>
+
+                <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+<p></p>

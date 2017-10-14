@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { RegisterService } from './register.service';
 
 @Component({
@@ -33,7 +32,6 @@ export class RegisterComponent implements OnInit {
             this.error = null;
             this.errorUserExists = null;
             this.errorEmailExists = null;
-            this.registerAccount.langKey = 'en';
             this.registerService.save(this.registerAccount).subscribe(() => {
                 this.success = true;
             }, (response) => this.processError(response));
