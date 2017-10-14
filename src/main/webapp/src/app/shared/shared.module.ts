@@ -9,3 +9,5 @@ import { LoginComponent } from './login/login.component';
   declarations: [LoginComponent]
 })
 export class SharedModule { }
+
+edoisdoifosd
