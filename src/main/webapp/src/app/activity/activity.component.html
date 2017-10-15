@@ -1,23 +1,11 @@
-<<<<<<< f9c685bbb619c8b05000299c9db63cc9850f4636
-<p>
-  Choix des activités
-</p>
-
-=======
->>>>>>> Structuration du code et utilisation de constant global
 <select [(ngModel)]="selectedActivity">
   <option *ngFor="let activity of listActivities" [ngValue]="activity"> {{activity}} </option>
 </select>
 <span>Vous avez selectionné l'activité: {{selectedActivity}}</span>
 <button (click)="AddActivity()" [disabled]="!isValidButton()">Ajouter l'activité</button>
 <select>
-<<<<<<< f9c685bbb619c8b05000299c9db63cc9850f4636
-<option *ngFor="let choice of userChoices" > {{choice}} </option>
-</select>
-=======
   <option *ngFor="let choice of userChoices" > {{choice}} </option>
 </select>
 <nav>
   <a routerLink="/activities" routerLinkActive="active">Crisis Center</a>
 </nav>
->>>>>>> Structuration du code et utilisation de constant global

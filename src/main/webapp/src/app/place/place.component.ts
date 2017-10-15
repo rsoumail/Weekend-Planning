@@ -1,11 +1,6 @@
-<<<<<<< f9c685bbb619c8b05000299c9db63cc9850f4636
-import {Component, OnInit} from '@angular/core';
-import {HttpParams, HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
-=======
 import { Component, OnInit } from '@angular/core';
 import { HttpParams, HttpClient } from '@angular/common/http';
->>>>>>> Structuration du code et utilisation de constant global
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import { PLACE_API_URL } from './../app.constants';
 @Component({
@@ -28,11 +23,7 @@ export class PlaceComponent implements OnInit {
   selectedDep = null;
   selectedCom = null;
   params = new HttpParams();
-<<<<<<< f9c685bbb619c8b05000299c9db63cc9850f4636
-  constructor(private http: HttpClient, private router: Router) {}
-=======
-  constructor(private http: HttpClient) { }
->>>>>>> Structuration du code et utilisation de constant global
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.http.get(this.urlRegions).subscribe(data => this.listRegions = data);
@@ -80,6 +71,6 @@ export class PlaceComponent implements OnInit {
   }
 
   isEmpty() {
-    return (this.userChoices.size < 1) ;
+    return (this.userChoices.size < 1);
   }
 }
