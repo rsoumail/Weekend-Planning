@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { ActivityComponent } from './activity/activity.component';
+import { PlaceComponent } from './place/place.component';
 import { SharedModule, LoginComponent } from './shared';
 import { LayoutsModule, FooterComponent, HeaderComponent} from './layouts';
 import { AccountModule, RegisterComponent } from './account';
@@ -17,8 +19,11 @@ const appRoutes:Routes = [
     component: RegisterComponent
   },
   {
-     path: '',
+     path: 'login',
      component: LoginComponent
+   },
+   {
+     path: 'activities', component: ActivityComponent
    }
 ]
 
@@ -38,6 +43,8 @@ const appRoutes:Routes = [
     LoginComponent,
     HeaderComponent,
     FooterComponent,
+    ActivityComponent,
+    PlaceComponent
   ],
   providers: [],
 

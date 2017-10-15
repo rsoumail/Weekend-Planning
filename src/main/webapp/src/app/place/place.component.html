@@ -1,0 +1,25 @@
+<h1> Choix des lieux</h1>
+<div>
+<select  [(ngModel)]="selectedRegion" (change)="chargerDep()" >
+<option *ngFor="let region of listRegions" [ngValue]="region"> {{region.nom}} </option>
+</select>
+<select  [(ngModel)]="selectedDep" (change)="chargerCom()">
+<option *ngFor="let dep of listDepartements" [ngValue]="dep"> {{dep.nom}} </option>
+</select>
+
+<select [(ngModel)]="selectedCom" (change)="infoCom()">
+<option *ngFor="let com of listCommunes" [ngValue]="com"> {{com.nom}} </option>
+</select>
+
+<div>
+<h2> Vous avez selectioné {{information}}</h2>
+<button  (click)="setChoice()" [disabled]="!isValidForm()">Ajouter</button>
+</div>
+
+<div>
+<h1>Lieux choisis</h1>
+<select >
+<option *ngFor="let choice of userChoices" > {{choice.nom}} </option>
+</select>
+</div>
+</div>
