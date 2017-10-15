@@ -9,7 +9,7 @@ import {PlaceComponent} from './place/place.component';
 import {SharedModule, LoginComponent} from './shared';
 import {LayoutsModule, FooterComponent, HeaderComponent} from './layouts';
 import {AccountModule, RegisterComponent} from './account';
-import {appRouting } from './app.routing';
+import { appRouting } from './app.routing';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 
 
