@@ -2,31 +2,15 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {ActivityComponent} from './activity/activity.component';
 import {PlaceComponent} from './place/place.component';
 import {SharedModule, LoginComponent} from './shared';
 import {LayoutsModule, FooterComponent, HeaderComponent} from './layouts';
 import {AccountModule, RegisterComponent} from './account';
-import { appRouting } from './app.routing';
+import {appRouting } from './app.routing';
 // import { DashboardComponent } from './dashboard/dashboard.component';
-
-
-
-const appRoutes: Routes = [
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'activities', component: ActivityComponent
-  }
-];
 
 
 @NgModule({
@@ -37,6 +21,7 @@ const appRoutes: Routes = [
     LayoutsModule,
     AccountModule,
     SharedModule,
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,
