@@ -1,4 +1,4 @@
-package fr.istic.m2il.weekendplanning.security;
+package fr.istic.m2il.weekendplanning.security.registry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

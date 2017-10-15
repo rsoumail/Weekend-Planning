@@ -25,9 +25,9 @@ public class ManagedUserVM extends UserDTO {
     }
 
     public ManagedUserVM(Long id, String email,  String login, String password, String firstName, String lastName,
-                        List<Activity> activities) {
+                        List<Activity> activities, Set<String> autorities) {
 
-        super(id, email, login, firstName, lastName, activities);
+        super(id, email, login, firstName, lastName, activities, autorities);
 
         this.password = password;
     }

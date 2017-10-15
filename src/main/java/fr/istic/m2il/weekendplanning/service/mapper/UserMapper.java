@@ -1,6 +1,7 @@
 package fr.istic.m2il.weekendplanning.service.mapper;
 
 import fr.istic.m2il.weekendplanning.domain.Activity;
+import fr.istic.m2il.weekendplanning.domain.Authority;
 import fr.istic.m2il.weekendplanning.domain.User;
 import fr.istic.m2il.weekendplanning.service.dto.UserDTO;
 
@@ -48,6 +49,11 @@ public class UserMapper {
             if(activities != null) {
                 user.setActivities(activities);
             }
+            Set<Authority> authorities = this.authoritiesFromStrings(userDTO.getAuthorities());
+            if(authorities != null) {
+                user.setAuthorities(authorities);
+            }
+
             return user;
         }
     }
@@ -74,5 +80,13 @@ public class UserMapper {
             activity.setName(string);
             return activity;
         }).collect(Collectors.toList());
+    }
+
+    public Set<Authority> authoritiesFromStrings(Set<String> strings) {
+        return strings.stream().map(string -> {
+            Authority auth = new Authority();
+            auth.setName(string);
+            return auth;
+        }).collect(Collectors.toSet());
     }
 }

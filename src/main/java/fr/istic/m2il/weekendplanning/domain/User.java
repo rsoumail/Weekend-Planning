@@ -3,6 +3,7 @@ package fr.istic.m2il.weekendplanning.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 //import com.sun.istack.internal.NotNull;
 //import fr.istic.m2il.weekendplanning.config.Constants;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import org.hibernate.validator.constraints.Email;
@@ -14,7 +15,9 @@ import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * A user.
@@ -47,12 +50,11 @@ public class User extends Person implements Serializable {
     private String password;
 
     @JsonIgnore
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "user_activity",
-            joinColumns = {@JoinColumn(name = "name", referencedColumnName = "id")}
-            
-    )
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "activity_name", referencedColumnName = "name")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Activity> activities = new ArrayList<>();
 
@@ -94,5 +96,23 @@ public class User extends Person implements Serializable {
 
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
+    }
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "user_authority",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @BatchSize(size = 20)
+    private Set<Authority> authorities = new HashSet<>();
+
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
     }
 }

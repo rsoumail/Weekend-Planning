@@ -1,9 +1,14 @@
 package fr.istic.m2il.weekendplanning.config;
 
-import fr.istic.m2il.weekendplanning.security.*;
+//import io.github.jhipster.config.JHipsterProperties;
 
-import io.github.jhipster.config.JHipsterProperties;
-import io.github.jhipster.security.*;
+import fr.istic.m2il.weekendplanning.security.DomainUserDetailsService;
+import fr.istic.m2il.weekendplanning.security.handler.AjaxAuthenticationFailureHandler;
+import fr.istic.m2il.weekendplanning.security.handler.AjaxAuthenticationSuccessHandler;
+import fr.istic.m2il.weekendplanning.security.handler.AjaxLogoutSuccessHandler;
+import fr.istic.m2il.weekendplanning.security.registry.Http401UnauthorizedEntryPoint;
+
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +24,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
-import org.springframework.security.web.authentication.RememberMeServices;
+//import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CorsFilter;
@@ -33,33 +38,43 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
-    private final UserDetailsService userDetailsService;
+    //private final UserDetailsService userDetailsService;
 
-    private final JHipsterProperties jHipsterProperties;
+    //private final DomainUserDetailsService userDetailsService;
 
-    private final RememberMeServices rememberMeServices;
+   // private final JHipsterProperties jHipsterProperties;
 
-    private final CorsFilter corsFilter;
+   // private final RememberMeServices rememberMeServices;
 
-    public SecurityConfiguration(AuthenticationManagerBuilder authenticationManagerBuilder, UserDetailsService userDetailsService,
-        JHipsterProperties jHipsterProperties, RememberMeServices rememberMeServices,
-        CorsFilter corsFilter) {
+  // private final CorsFilter corsFilter;
+
+    public SecurityConfiguration(AuthenticationManagerBuilder authenticationManagerBuilder /*UserDetailsService userDetailsService
+        JHipsterProperties jHipsterProperties,  RememberMeServices rememberMeServices,
+        CorsFilter corsFilter*/) {
 
         this.authenticationManagerBuilder = authenticationManagerBuilder;
-        this.userDetailsService = userDetailsService;
-        this.jHipsterProperties = jHipsterProperties;
-        this.rememberMeServices = rememberMeServices;
-        this.corsFilter = corsFilter;
+       // this.userDetailsService = userDetailsService;
+        //this.jHipsterProperties = jHipsterProperties;
+       // this.rememberMeServices = rememberMeServices;
+       //this.corsFilter = corsFilter;
     }
 
     @PostConstruct
     public void init() {
-        try {
+        /*try {
             authenticationManagerBuilder
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
         } catch (Exception e) {
             throw new BeanInitializationException("Security configuration failed", e);
+        }*/
+
+        /**/
+        try {
+            authenticationManagerBuilder.inMemoryAuthentication()
+                    .withUser("user").password("password").roles("USER");
+        }catch (Exception e){
+
         }
     }
 
@@ -96,6 +111,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/i18n/**")
             .antMatchers("/content/**")
             .antMatchers("/swagger-ui/index.html")
+                .antMatchers("/api/all")
             .antMatchers("/test/**");
     }
 
@@ -104,22 +120,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .csrf()
             .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-        .and()
-            .addFilterBefore(corsFilter, CsrfFilter.class)
-            .exceptionHandling()
-            .authenticationEntryPoint(http401UnauthorizedEntryPoint())
-        .and()
+       // .and()
+            //.addFilterBefore(corsFilter, CsrfFilter.class)
+            //.exceptionHandling()
+            //.authenticationEntryPoint(http401UnauthorizedEntryPoint())
+        /*.and()
             .rememberMe()
             .rememberMeServices(rememberMeServices)
             .rememberMeParameter("remember-me")
-            .key(jHipsterProperties.getSecurity().getRememberMe().getKey())
+            .key(jHipsterProperties.getSecurity().getRememberMe().getKey())*/
         .and()
             .formLogin()
             .loginProcessingUrl("/api/authentication")
             .successHandler(ajaxAuthenticationSuccessHandler())
             .failureHandler(ajaxAuthenticationFailureHandler())
-            .usernameParameter("j_username")
-            .passwordParameter("j_password")
+            .usernameParameter("username")
+            .passwordParameter("password")
             .permitAll()
         .and()
             .logout()
@@ -133,17 +149,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .and()
             .authorizeRequests()
             .antMatchers("/api/register").permitAll()
-            .antMatchers("/api/activate").permitAll()
+            /*.antMatchers("/api/activate").permitAll()
             .antMatchers("/api/authenticate").permitAll()
             .antMatchers("/api/account/reset-password/init").permitAll()
             .antMatchers("/api/account/reset-password/finish").permitAll()
-            .antMatchers("/api/profile-info").permitAll()
+            .antMatchers("/api/profile-info").permitAll()*/
             .antMatchers("/api/**").authenticated()
-            .antMatchers("/management/health").permitAll()
-            .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            /*.antMatchers("/management/health").permitAll()
+            .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)*/
             .antMatchers("/v2/api-docs/**").permitAll()
-            .antMatchers("/swagger-resources/configuration/ui").permitAll()
-            .antMatchers("/swagger-ui/index.html").hasAuthority(AuthoritiesConstants.ADMIN);
+            .antMatchers("/swagger-resources/configuration/ui").permitAll();
+            //.antMatchers("/swagger-ui/index.html").hasAuthority(AuthoritiesConstants.ADMIN);
 
     }
 

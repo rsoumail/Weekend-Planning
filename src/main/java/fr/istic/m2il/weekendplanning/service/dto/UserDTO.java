@@ -2,12 +2,15 @@ package fr.istic.m2il.weekendplanning.service.dto;
 
 //import fr.istic.m2il.weekendplanning.config.Constants;
 import fr.istic.m2il.weekendplanning.domain.Activity;
+import fr.istic.m2il.weekendplanning.domain.Authority;
 import fr.istic.m2il.weekendplanning.domain.User;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.*;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * A DTO representing a user, with his activities.
@@ -33,6 +36,8 @@ public class UserDTO {
 
     private List<Activity> activities ;
 
+    private Set<String> authorities;
+
     public UserDTO() {
         // Empty constructor needed for Jackson.
     }
@@ -40,18 +45,19 @@ public class UserDTO {
     public UserDTO(User user){
 
         this(user.getId(), user.getEmail(), user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getActivities()
+            user.getActivities(), user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet())
         );
 
     }
 
-    public UserDTO(Long id, String email, String login, String firstName, String lastName, List<Activity> activities) {
+    public UserDTO(Long id, String email, String login, String firstName, String lastName, List<Activity> activities, Set<String> authorities) {
         this.id = id;
         this.email = email;
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.activities = activities;
+        this.authorities = authorities;
     }
 
     public Long getId() {
@@ -102,6 +108,10 @@ public class UserDTO {
         this.activities = activities;
     }
 
+    public Set<String> getAuthorities() {
+        return authorities;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -110,6 +120,7 @@ public class UserDTO {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", activities=" + activities +
+                ", authorities=" + authorities +
                 "}";
     }
 }
