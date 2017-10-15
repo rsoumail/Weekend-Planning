@@ -9,6 +9,7 @@ import {PlaceComponent} from './place/place.component';
 import {SharedModule, LoginComponent} from './shared';
 import {LayoutsModule, FooterComponent, HeaderComponent} from './layouts';
 import {AccountModule, RegisterComponent} from './account';
+import { appRouting } from './app.routing';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 
 
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes),
+    appRouting,
     BrowserModule,
     FormsModule,
     LayoutsModule,
