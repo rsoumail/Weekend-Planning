@@ -8,7 +8,7 @@ import {
 } from '@angular/http';
 
 import { Observable } from 'rxjs';
-import { SERVER_API_URL } from '../../app.constants'
+import { SERVER_API_URL } from '../../app.constants';
 
 @Injectable()
 export class RegisterService {

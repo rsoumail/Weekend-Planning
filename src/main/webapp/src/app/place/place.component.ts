@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpParams, HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-place',
@@ -7,7 +8,6 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./place.component.css']
 })
 export class PlaceComponent implements OnInit {
-
   userChoices = new Set();
   private urlCommunes: string;
   private urlDepartements: string;
@@ -22,7 +22,7 @@ export class PlaceComponent implements OnInit {
   selectedDep = null;
   selectedCom = null;
   params = new HttpParams();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     this.http.get(this.urlRegions).subscribe(data => this.listRegions = data);
@@ -63,5 +63,13 @@ export class PlaceComponent implements OnInit {
 
   isValidForm() {
     return this.selected != null;
+  }
+
+  nextStep() {
+    this.router.navigateByUrl('/activity');
+  }
+
+  isEmpty() {
+    return (this.userChoices.size < 1) ;
   }
 }
