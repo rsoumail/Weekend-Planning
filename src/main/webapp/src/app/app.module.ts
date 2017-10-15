@@ -7,7 +7,7 @@ import {AppComponent} from './app.component';
 import {ActivityComponent} from './activity/activity.component';
 import {PlaceComponent} from './place/place.component';
 import {SharedModule, LoginComponent} from './shared';
-import {LayoutsModule, FooterComponent, HeaderComponent} from './layouts';
+import {LayoutsModule, FooterComponent, HeaderComponent, NavbarComponent} from './layouts';
 import {AccountModule, RegisterComponent} from './account';
 import { appRouting } from './app.routing';
 // import { DashboardComponent } from './dashboard/dashboard.component';
@@ -30,7 +30,8 @@ import { appRouting } from './app.routing';
     HeaderComponent,
     FooterComponent,
     ActivityComponent,
-    PlaceComponent
+    PlaceComponent,
+    NavbarComponent,
   ],
   providers: [],
 
