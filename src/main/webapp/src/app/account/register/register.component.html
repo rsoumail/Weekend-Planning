@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-4">
             <form name="form" role="form" (ngSubmit)="register()" #registerForm="ngForm" *ngIf="!success">
                 <div class="form-group">
                   <label for="lastname">Nom</label>
@@ -77,7 +77,7 @@
                 <div class="form-group">
                     <label class="form-control-label" for="password">Mot de passe</label>
                     <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="Mot de passe"
-                            [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
+                            [(ngModel)]="registerAccount.password" minlength=8 maxlength=50 required>
                     <div *ngIf="password.dirty && password.invalid">
                         <small class="form-text text-danger" *ngIf="password.errors.required"
                                >
@@ -97,7 +97,7 @@
                 <div class="form-group">
                     <label class="form-control-label" for="confirmPassword">Confirmation du mot de passe</label>
                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="Confirmer le mot de passe"
-                            [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
+                            [(ngModel)]="confirmPassword" minlength=8 maxlength=50 required>
                     <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
                         <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required"
                               >
@@ -114,7 +114,7 @@
                     </div>
                 </div>
 
-                <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary">Register</button>
+                <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-success">Valider</button>
             </form>
         </div>
     </div>
