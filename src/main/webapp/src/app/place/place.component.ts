@@ -31,7 +31,7 @@ export class PlaceComponent implements OnInit {
   chargerDep() {
     //    this.params.set('code', this.selectedRegion.code);
     console.log(this.selectedRegion.code);
-    this.urlDepartements = PLACE_API_URL + '/regions/'.concat(this.selectedRegion.code).concat('/departements?fields=nom,code');
+    this.urlDepartements = PLACE_API_URL + 'regions/'.concat(this.selectedRegion.code).concat('/departements?fields=nom,code');
     this.http.get(this.urlDepartements).subscribe(data => this.listDepartements = data);
     this.information = 'la region: '.concat(this.selectedRegion.nom);
     this.selected = this.selectedRegion;
@@ -67,7 +67,7 @@ export class PlaceComponent implements OnInit {
   }
 
   nextStep() {
-    this.router.navigateByUrl('/activity');
+    this.router.navigateByUrl('/activites');
   }
 
   isEmpty() {

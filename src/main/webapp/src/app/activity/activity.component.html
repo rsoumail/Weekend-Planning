@@ -1,11 +1,18 @@
-<select [(ngModel)]="selectedActivity">
-  <option *ngFor="let activity of listActivities" [ngValue]="activity"> {{activity}} </option>
-</select>
-<span>Vous avez selectionné l'activité: {{selectedActivity}}</span>
-<button (click)="AddActivity()" [disabled]="!isValidButton()">Ajouter l'activité</button>
-<select>
-  <option *ngFor="let choice of userChoices" > {{choice}} </option>
-</select>
-<nav>
-  <a routerLink="/activities" routerLinkActive="active">Crisis Center</a>
-</nav>
+<div class="row justify-content-center">
+ 	<h2>Choix des activités</h2>
+</div>
+
+<div class="row justify-content-center">
+ 	<select [(ngModel)]="selectedActivity">
+ 		 <option *ngFor="let activity of listActivities" [ngValue]="activity"> {{activity}} </option>
+	</select>
+	<span>Vous avez selectionné l'activité: {{selectedActivity}}</span>
+	<button (click)="AddActivity()" [disabled]="!isValidButton()">Ajouter l'activité</button>
+	<select>
+ 		 <option *ngFor="let choice of userChoices" > {{choice}} </option>
+	</select>
+	<nav>
+  		<a routerLink="/activity" routerLinkActive="active">Crisis Center</a>
+	</nav>
+</div>
+
