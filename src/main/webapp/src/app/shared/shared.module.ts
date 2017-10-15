@@ -6,7 +6,7 @@ import { LoginService } from './login/login.service';
   imports: [
     CommonModule
   ],
-  //declarations: []
+  // declarations: []
   providers: [LoginService],
   schemas: [NO_ERRORS_SCHEMA]
 })

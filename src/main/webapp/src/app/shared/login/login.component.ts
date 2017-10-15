@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginService } from './login.service';
+import {Component, OnInit} from '@angular/core';
+import {LoginService} from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,22 +11,22 @@ export class LoginComponent implements OnInit {
   loginInfo: any;
   success: boolean;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) {}
 
   ngOnInit() {
 
-  	this.success = false;
-  	this.loginInfo = {};
+    this.success = false;
+    this.loginInfo = {};
 
   }
 
-  login(){
+  login() {
 
-  	this.loginService.login(this.loginInfo).subscribe(() => {
-  		/* TO DO */
-  	}, () => {
-  		/* TO DO */
-  	});
+    this.loginService.login(this.loginInfo).subscribe(() => {
+      /* TO DO */
+    }, () => {
+      /* TO DO */
+    });
 
   }
 

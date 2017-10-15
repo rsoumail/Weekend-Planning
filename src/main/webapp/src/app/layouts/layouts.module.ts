@@ -11,7 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     CommonModule,
     LayoutsRoutingModule,
   ],
-  //declarations: [FooterComponent, HeaderComponent],
+  // declarations: [FooterComponent, HeaderComponent],
   schemas: [NO_ERRORS_SCHEMA],
   declarations: [NavbarComponent]
 })
