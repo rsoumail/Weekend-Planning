@@ -30,7 +30,7 @@
                 <div class="form-group">
                   <label for="lastname">Nom</label>
                   <input type="text" class="form-control" [(ngModel)]="registerAccount.lastname" id="lastname" name="lastname" #lastname="ngModel" placeholder="Votre Nom" required>
-                  <div *ngIf="lastname.invalid">
+                  <div *ngIf="lastname.dirty && lastname.invalid">
                     <small class="form-text text-danger" *ngIf="lastname.errors.required">
                       Votre Nom est obligatoire
                     </small>

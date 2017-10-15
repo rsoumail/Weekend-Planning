@@ -4,7 +4,7 @@
   			<div class="form-group">
   				<label for="login">Identifiant</label>
   				<input type="text" class="form-control" [(ngModel)]="loginInfo.login" id="login" name="login" #login="ngModel" placeholder="Votre Identifiant" required>
-  				<div *ngIf="login.invalid">
+  				<div *ngIf="login.dirty && login.invalid">
   					<small class="form-text text-danger" *ngIf="login.errors.required">
   						Votre identifiant est obligatoire.
   					</small>
