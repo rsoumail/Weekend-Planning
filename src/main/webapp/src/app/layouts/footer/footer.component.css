@@ -1,13 +1,33 @@
 
+footer{
+  height: auto; // Replace with the height your footer should be
+    width: 100%;
+    background-image: none;
+    /*background-repeat: repeat;*/
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: absolute;
+    bottom: 0pt;
+    left: 0pt;
+}
+
+.footer-content{
+  height: auto; // Replace with the height your footer should be
+   width: 100%; // Visible width of footer
+   margin:auto;
+}
+
 .footer {
   position: fixed;
   width: 100%;
   background: #EDEFF1;
 	height: auto;
-	padding-bottom: 30px;
+  /*margin-right: 30px;*/
+	/*padding-bottom: 47px;*/
   margin-top: 2%;
 	border-bottom: 1px solid #CCCCCC;
 	border-top: 1px solid #DDDDDD;
+  position: relative;
   bottom: 0;
 }
 .footer h3 {
@@ -79,7 +99,13 @@
 	background: #E3E3E3;
 	border-top: 1px solid #DDDDDD;
 	padding-top: 10px;
-	padding-bottom: 50px;
+	/*padding-bottom: 45px;*/
+  /*position:fixed;*/
+  width: 100%;
+  	height: auto;
+  /*  margin-right: 30px;*/
+  /*  position:relative;*/
+    bottom: 0;
 }
 .footer-bottom p.pull-left {
 	padding-top: 6px;

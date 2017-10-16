@@ -139,7 +139,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .permitAll()
         .and()
             .logout()
-            .logoutUrl("/api/logout")
+            .logoutUrl("localhost:8080/api/logout")
             .logoutSuccessHandler(ajaxLogoutSuccessHandler())
             .permitAll()
         .and()
