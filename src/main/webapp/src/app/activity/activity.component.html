@@ -1,18 +1,31 @@
 <div class="row justify-content-center">
- 	<h2>Choix des activités</h2>
+ 	<div class="col-md-4">
+ 		<h2>Choix des activités</h2>
+ 	</div> 	
 </div>
 
 <div class="row justify-content-center">
- 	<select [(ngModel)]="selectedActivity">
+	<div class="col-md-3 form-group">
+		<label>Listes des Activités</label>
+		<select [(ngModel)]="selectedActivity" (change)="chargeActivite" class="form-control">
  		 <option *ngFor="let activity of listActivities" [ngValue]="activity"> {{activity}} </option>
-	</select>
-	<span>Vous avez selectionné l'activité: {{selectedActivity}}</span>
-	<button (click)="AddActivity()" [disabled]="!isValidButton()">Ajouter l'activité</button>
-	<select>
- 		 <option *ngFor="let choice of userChoices" > {{choice}} </option>
-	</select>
-	<nav>
-  		<a routerLink="/activity" routerLinkActive="active">Crisis Center</a>
-	</nav>
+		</select>
+	</div>
+ 	
 </div>
+
+<div class="row justify-content-center">
+ <div class="col-md-3 form-group">
+ 	<span >Vous avez selectionné l'activité: {{selectedActivity}}</span>
+ 	<button type="button" (click)="AddActivity()" [disabled]="!isValidButton()" class="btn btn-primary">Ajouter l'activité</button>
+ </div>
+</div>
+<div class="row justify-content-center">
+	<div class="col-md-3 form-group">
+	<ul>
+		<li *ngFor="let choice of userChoices"> {{choice}}</li>
+	</ul>
+	</div>
+</div>
+
 

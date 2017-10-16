@@ -1,6 +1,6 @@
 
 .footer {
-  position: relative;
+  position: fixed;
   width: 100%;
   background: #EDEFF1;
 	height: auto;
