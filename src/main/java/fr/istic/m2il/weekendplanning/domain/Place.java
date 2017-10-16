@@ -20,7 +20,9 @@ public class Place implements Serializable {
     
    // private List<Person> persons = new ArrayList<Person>();
     //private List<Activity> activity = new ArrayList<Activity>();
-    
+
+	private String name;
+	private PlaceType type;
 
 	public long getId() {
 		return id;
@@ -29,8 +31,23 @@ public class Place implements Serializable {
 		this.id = id;
 	}
 
+	public String getName() {
+		return name;
+	}
 
-   // @ManyToMany(mappedBy="places")
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public PlaceType getType() {
+		return type;
+	}
+
+	public void setType(PlaceType type) {
+		this.type = type;
+	}
+
+	// @ManyToMany(mappedBy="places")
    // private List<User> users = new ArrayList<User>();
 
    // @ManyToMany(mappedBy="places")
