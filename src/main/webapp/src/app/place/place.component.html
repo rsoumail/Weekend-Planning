@@ -1,31 +1,56 @@
 <div class="row justify-content-center">
-  <h1> Choix des lieux</h1>
-  <div>
-    <select [(ngModel)]="selectedRegion" (change)="chargerDep()">
+  <div class="col-md-4">
+    <h1> Choix des lieux</h1>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-3 form-group">
+    <label>Regions</label>
+    <select [(ngModel)]="selectedRegion" (change)="chargerDep()" class="form-control">
       <option *ngFor="let region of listRegions" [ngValue]="region"> {{region.nom}} </option>
     </select>
-    <select [(ngModel)]="selectedDep" (change)="chargerCom()">
+  </div>
+
+  <div class="col-md-3 form-group">
+    <label>Départements</label>
+    <select [(ngModel)]="selectedDep" (change)="chargerCom()" class="form-control">
       <option *ngFor="let dep of listDepartements" [ngValue]="dep"> {{dep.nom}} </option>
     </select>
+  </div>
 
-    <select [(ngModel)]="selectedCom" (change)="infoCom()">
+  <div class="col-md-3 form-group">
+    <label>Villes</label>
+    <select [(ngModel)]="selectedCom" (change)="infoCom()" class="form-control">
       <option *ngFor="let com of listCommunes" [ngValue]="com"> {{com.nom}} </option>
     </select>
+  </div>
+</div>
 
-    <div>
+<div class="row justify-content-center">
+  <div class="col-md-9">
+    <button type="button" (click)="setChoice()" [disabled]="!isValidForm()"
+                          class="float-right btn btn-primary">Ajouter</button>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-3">
       <h2> Vous avez selectioné {{information}}</h2>
-      <button (click)="setChoice()" [disabled]="!isValidForm()">Ajouter</button>
-    </div>
+  </div>
+</div>
 
-    <div>
+<div class="row justify-content-center">
+    <div class="col-md-3 form-group">
       <h1>Lieux choisis</h1>
-      <select>
-  <option *ngFor="let choice of userChoices" > {{choice.nom}} </option>
-  </select>
-      <div>
-        <button (click)="nextStep()" [disabled]="isEmpty()">Etape suivante</button>
-      </div>
+      <select class="form-control">
+        <option *ngFor="let choice of userChoices" > {{choice.nom}} </option>
+      </select>
     </div>
+</div>
 
+<div class="row justify-content-center">
+  <div class="col-md-3">
+    <button type="button" (click)="nextStep()" [disabled]="isEmpty()"
+                  class="float-right btn btn-primary">Etape suivante</button>
   </div>
 </div>
