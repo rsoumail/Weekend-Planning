@@ -25,6 +25,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.ws.rs.Produces;
+
 @RestController
 @RequestMapping("/api")
 public class UserResource {
@@ -79,6 +81,7 @@ public class UserResource {
     }
 
     @GetMapping("/all")
+    @Produces("application/json")
     public Optional<User> get (){
         return userRepository.findOneByLogin("");
     }
