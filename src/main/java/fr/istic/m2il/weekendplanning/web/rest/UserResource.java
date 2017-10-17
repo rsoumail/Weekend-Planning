@@ -99,4 +99,13 @@ public class UserResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    /**
+     * POST
+     */
+   /* @PutMapping("/users")
+    public ResponseEntity updateUser(){
+
+
+    }*/
 }

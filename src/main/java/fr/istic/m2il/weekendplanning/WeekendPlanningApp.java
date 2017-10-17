@@ -20,7 +20,7 @@ import java.util.Collection;
 
 @ComponentScan
 @EnableConfigurationProperties({ApplicationProperties.class})
-@EnableAutoConfiguration(exclude = {})
+@EnableAutoConfiguration(exclude = org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class)
 public class WeekendPlanningApp {
 
     private static final Logger log = LoggerFactory.getLogger(WeekendPlanningApp.class);
