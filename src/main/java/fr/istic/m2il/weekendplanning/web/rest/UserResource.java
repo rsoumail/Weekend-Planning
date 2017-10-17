@@ -100,9 +100,9 @@ public class UserResource {
     /**
      * POST
      */
-    @PutMapping("/users")
+   /* @PutMapping("/users")
     public ResponseEntity updateUser(){
 
 
-    }
+    }*/
 }
