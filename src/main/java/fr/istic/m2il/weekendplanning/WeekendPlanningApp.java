@@ -1,6 +1,6 @@
 package fr.istic.m2il.weekendplanning;
 
-import fr.istic.m2il.weekendplanning.config.ApplicationProperties;
+//import fr.istic.m2il.weekendplanning.config.ApplicationProperties;
 import fr.istic.m2il.weekendplanning.config.DefaultProfileUtil;
 import fr.istic.m2il.weekendplanning.config.EnvironmentConstants;
 import org.slf4j.Logger;
@@ -19,8 +19,8 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @ComponentScan
-@EnableConfigurationProperties({ApplicationProperties.class})
-@EnableAutoConfiguration(exclude = org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class)
+@EnableConfigurationProperties()
+@EnableAutoConfiguration()
 public class WeekendPlanningApp {
 
     private static final Logger log = LoggerFactory.getLogger(WeekendPlanningApp.class);

@@ -15,6 +15,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,22 +45,23 @@ public class UserService {
 
    // private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, ActivityRepository activityRepository) {
+    public UserService(UserRepository userRepository, ActivityRepository activityRepository/*, PasswordEncoder passwordEncoder*/) {
         this.userRepository = userRepository;
-        //this.passwordEncoder = passwordEncoder;
+       // this.passwordEncoder = passwordEncoder;
         this.activityRepository = activityRepository;
        // this.cacheManager = cacheManager;
     }
 
-    public User createUser(String login, String email,  String password, String firstName, String lastName) {
+    public User createUser(String login, String email,  String password/*, String firstName, String lastName*/) {
 
         User newUser = new User();
-        //String encryptedPassword = passwordEncoder.encode(password);
+       // String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
         // new user gets initially a generated password
         //newUser.setPassword(encryptedPassword);
-        newUser.setFirstName(firstName);
-        newUser.setLastName(lastName);
+        newUser.setPassword(password);
+        /*newUser.setFirstName(firstName);
+        newUser.setLastName(lastName);*/
         newUser.setEmail(email);
  
 

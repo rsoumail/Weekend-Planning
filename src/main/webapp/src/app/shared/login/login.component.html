@@ -7,30 +7,42 @@
 </div>
 <div class="row justify-content-center">
   <div class="col-md-4">
-    <form name="form" role="form" (ngSubmit)="login()" #loginForm="ngForm" *ngIf="!success">
+    <div class="alert alert-danger" *ngIf="authenticationError">
+      <strong>Echèc d'authentification!</strong>
+      <span>Veuillez Verifier vos informations et réessayez.</span>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <form name="form" role="form" (ngSubmit)="login()">
       <div class="form-group">
-        <label for="login">Identifiant</label>
-        <input type="text" class="form-control" [(ngModel)]="loginInfo.login" id="login" name="login" #login="ngModel" placeholder="Votre Identifiant" required>
-        <div *ngIf="login.dirty && login.invalid">
-          <small class="form-text text-danger" *ngIf="login.errors.required">
+        <label for="username">Identifiant</label>
+        <input type="text" class="form-control" [(ngModel)]="username" id="username" name="username"  placeholder="Votre Identifiant" required>
+        <!--div *ngIf="logi.dirty && logi.invalid">
+          <small class="form-text text-danger" *ngIf="logi.errors.required">
             Votre identifiant est obligatoire.
           </small>
-        </div>
+        </div-->
       </div>
       <div class="form-group">
-        <label for="login">Mot de passe</label>
-        <input type="text" class="form-control" [(ngModel)]="loginInfo.password" id="password" name="password" #password="ngModel" placeholder="Votre Mot de passe" required minlength="8">
-        <div *ngIf="password.dirty && password.invalid">
+        <label for="password">Mot de passe</label>
+        <input type="text" class="form-control" [(ngModel)]="password" id="password" name="password"  placeholder="Votre Mot de passe" required minlength="8">
+        <!--div *ngIf="password.dirty && password.invalid">
           <small class="form-text text-danger" *ngIf="password.errors.required">
     				Votre mot de passe est obligatoire.
     			</small>
           <small class="form-text text-danger" *ngIf="password.errors.minlength">
     						Votre mot de passe doit contenir au moins 8 caractères.
     					</small>
-        </div>
+        </div-->
       </div>
-      <button type="submit" [disabled]="loginForm.form.invalid" class="btn btn-success">Connexion</button>
-       <a class="btn btn-danger" [routerLink]="['/register']">Inscription</a>
+      <button type="submit" class="btn btn-success">Connexion</button>
+      <a class="alert-link" [routerLink]="['/register']">Inscription</a>
     </form>
+    <div class="alert alert-warning">
+                <span>You don't have an account yet?</span>
+                <a class="alert-link" (click)="register()">Register a new account</a>
+            </div>
   </div>
-</div> 
+</div>
