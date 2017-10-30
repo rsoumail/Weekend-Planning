@@ -17,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -75,7 +76,7 @@ public class UserResource {
             User newUser = userService.createUser(managedUserVM);
            // mailService.sendCreationEmail(newUser);
             return ResponseEntity.created(new URI("/api/users/" + newUser.getLogin()))
-                    .headers(HeaderUtil.createAlert( "A user is created with identifier " + newUser.getLogin(), newUser.getLogin()))
+                    .headers(HeaderUtil.createAlert(                                                                                                        "A user is created with identifier " + newUser.getLogin(), newUser.getLogin()))
                     .body(newUser);
         }
     }
@@ -92,6 +93,7 @@ public class UserResource {
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and with body all users
      */
+    @Secured("hasRole('ROLE_USER')")
     @GetMapping("/users")
     //@Timed
     public ResponseEntity<List<UserDTO>> getAllUsers(Pageable pageable) {

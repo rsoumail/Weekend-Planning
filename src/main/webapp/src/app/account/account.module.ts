@@ -4,13 +4,15 @@ import {RegisterComponent} from './register/register.component';
 import {RegisterService} from './register/register.service';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {Routes, RouterModule} from '@angular/router';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule
   ],
   declarations: [RegisterComponent],
   providers: [RegisterService],

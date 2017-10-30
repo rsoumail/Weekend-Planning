@@ -45,7 +45,7 @@ public class User extends Person implements Serializable {
 
     @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60)
+    @Size(min = 8, max = 60)
     @Column(name = "password_hash",length = 60)
     private String password;
 
@@ -58,7 +58,7 @@ public class User extends Person implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Activity> activities = new ArrayList<>();
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

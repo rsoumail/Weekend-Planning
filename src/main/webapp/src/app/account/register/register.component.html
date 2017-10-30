@@ -3,7 +3,8 @@
     <h1>Inscription</h1>
 
     <div class="alert alert-success" *ngIf="success">
-      <strong>Votre compte a été crée !</strong>
+      <strong>Votre compte a été crée !</strong> Vous pouvez vous connectez par ici
+      <a [routerLink]="['/']">Vous pouvez vous connectez par ici</a>
     </div>
 
     <div class="alert alert-danger" *ngIf="error">

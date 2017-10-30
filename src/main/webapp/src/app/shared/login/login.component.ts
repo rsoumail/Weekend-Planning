@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginService} from './login.service';
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,26 +8,33 @@ import {LoginService} from './login.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginInfo: any;
-  success: boolean;
+  password: string;
+  username: string;
+  credentials: any;
+  authenticationError: boolean;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-
-    this.success = false;
-    this.loginInfo = {};
-
+    this.credentials = {};
   }
 
   login() {
-
-    this.loginService.login(this.loginInfo).subscribe(() => {
-      /* TO DO */
-    }, () => {
-      /* TO DO */
-    });
-
+    this.credentials.username = this.username;
+    this.credentials.password = this.password;
+    this.loginService.login(this.credentials).subscribe(() => {
+    //   this.success = true;
+  }, (response) => {});
+    this.authenticationError = true;
   }
+
+  cancel() {
+        this.credentials = {
+            username: null,
+            password: null,
+        };
+        this.authenticationError = false;
+        //this.activeModal.dismiss('cancel');
+    }
 
 }
