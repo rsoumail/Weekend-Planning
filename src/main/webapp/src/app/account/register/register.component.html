@@ -29,13 +29,24 @@
     <form name="form" role="form" (ngSubmit)="register()" #registerForm="ngForm" *ngIf="!success">
       <div class="form-group">
         <label for="lastname">Nom</label>
-        <input type="text" class="form-control" [(ngModel)]="registerAccount.lastname" id="lastname" name="lastname" #lastname="ngModel" placeholder="Votre Nom" required>
+        <input type="text" class="form-control" [(ngModel)]="registerAccount.lastName" id="lastname" name="lastname" #lastname="ngModel" placeholder="Votre Nom" required>
         <div *ngIf="lastname.dirty && lastname.invalid">
           <small class="form-text text-danger" *ngIf="lastname.errors.required">
                       Votre Nom est obligatoire
                     </small>
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="firstname">Prenom</label>
+        <input type="text" class="form-control" [(ngModel)]="registerAccount.firstName" id="firstname" name="firstname" #firstname="ngModel" placeholder="Votre Prenom" required>
+        <div *ngIf="firstname.dirty && firstname.invalid">
+          <small class="form-text text-danger" *ngIf="firstname.errors.required">
+                      Votre Prenom est obligatoire
+                    </small>
+        </div>
+      </div>
+
       <div class="form-group">
         <label class="form-control-label" for="login">Login</label>
         <input type="text" class="form-control" [(ngModel)]="registerAccount.login" id="login" name="login" #login="ngModel" placeholder="Votre Login" required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
