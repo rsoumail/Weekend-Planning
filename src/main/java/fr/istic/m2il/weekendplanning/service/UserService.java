@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,16 +37,16 @@ public class UserService {
 
 
 
-    //private final PasswordEncoder passwordEncoder ;
+    private final PasswordEncoder passwordEncoder ;
 
     private final ActivityRepository activityRepository;
 
 
    // private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, ActivityRepository activityRepository/*, PasswordEncoder passwordEncoder*/) {
+    public UserService(UserRepository userRepository, ActivityRepository activityRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-       // this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
         this.activityRepository = activityRepository;
        // this.cacheManager = cacheManager;
     }
@@ -55,11 +54,12 @@ public class UserService {
     public User createUser(String login, String email,  String password/*, String firstName, String lastName*/) {
 
         User newUser = new User();
-       // String encryptedPassword = passwordEncoder.encode(password);
+        newUser.getAuthorities();
+        String encryptedPassword = passwordEncoder.encode(password);
+        log.info("LOG PASS ENCODE", encryptedPassword);
         newUser.setLogin(login);
         // new user gets initially a generated password
-        //newUser.setPassword(encryptedPassword);
-        newUser.setPassword(password);
+        newUser.setPassword(encryptedPassword);
         /*newUser.setFirstName(firstName);
         newUser.setLastName(lastName);*/
         newUser.setEmail(email);

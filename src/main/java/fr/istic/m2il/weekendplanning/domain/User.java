@@ -58,6 +58,22 @@ public class User extends Person implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Activity> activities = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_place",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "place_name", referencedColumnName = "nom")})
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private List<Place> places = new ArrayList<Place>();
+
+    public List<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(List<Place> places) {
+        this.places = places;
+    }
+
     public Long getId() {
         return id;
     }

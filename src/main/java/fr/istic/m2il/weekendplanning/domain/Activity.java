@@ -28,9 +28,21 @@ public class Activity implements Serializable {
     @Column(length = 50)
     private String name;
 
+
+    @Column(name = "wind_min", nullable = false)
+    private Integer windMin;
+    @Column(name = "wind_max", nullable = false)
+    private Integer windMax;
+    @Column(name = "temperature_max", nullable = false)
+    private Integer temperatureMax;
+    @Column(name = "temperature_min", nullable = false)
+    private Integer temperatureMin;
+    @Column(name = "conditions")
+    @ElementCollection
+    private List<String> conditions = new ArrayList<>();
+
     @ManyToMany(mappedBy = "activities")
     private List<User> users = new ArrayList<User>();
-   // private List<Place> place = new ArrayList<Place>();
 
     public String getName() {
         return name;
@@ -49,26 +61,50 @@ public class Activity implements Serializable {
         this.users = users;
     }
 
-   /* @JsonIgnore
-    @ManyToMany(cascade= CascadeType.ALL)
-    @JoinTable(
-            name = "activity_place",
-            joinColumns = {@JoinColumn(name = "activity_id", referencedColumnName = "id")}
-
-    )
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    public List<Place> getPlace() {
-        return place;
-    }
-
-    public void setPlace(List<Place> place) {
-        this.place = place;
-    }
-*/
     @Override
     public String toString() {
         return "Activity{" +
                 "name='" + name + '\'' +
                 "}";
+    }
+
+    public Integer getWindMin() {
+        return windMin;
+    }
+
+    public void setWindMin(Integer windMin) {
+        this.windMin = windMin;
+    }
+
+    public Integer getWindMax() {
+        return windMax;
+    }
+
+    public void setWindMax(Integer windMax) {
+        this.windMax = windMax;
+    }
+
+    public Integer getTemperatureMax() {
+        return temperatureMax;
+    }
+
+    public void setTemperatureMax(Integer temperatureMax) {
+        this.temperatureMax = temperatureMax;
+    }
+
+    public Integer getTemperatureMin() {
+        return temperatureMin;
+    }
+
+    public void setTemperatureMin(Integer temperatureMin) {
+        this.temperatureMin = temperatureMin;
+    }
+
+    public List<String> getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(List<String> conditions) {
+        this.conditions = conditions;
     }
 }

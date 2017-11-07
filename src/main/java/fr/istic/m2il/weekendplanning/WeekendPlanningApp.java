@@ -3,6 +3,7 @@ package fr.istic.m2il.weekendplanning;
 //import fr.istic.m2il.weekendplanning.config.ApplicationProperties;
 import fr.istic.m2il.weekendplanning.config.DefaultProfileUtil;
 import fr.istic.m2il.weekendplanning.config.EnvironmentConstants;
+import fr.istic.m2il.weekendplanning.service.CityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -79,5 +80,6 @@ public class WeekendPlanningApp {
                 InetAddress.getLocalHost().getHostAddress(),
                 env.getProperty("server.port"),
                 env.getActiveProfiles());
+        
     }
 }

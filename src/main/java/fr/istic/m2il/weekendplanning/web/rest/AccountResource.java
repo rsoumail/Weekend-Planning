@@ -54,8 +54,6 @@ public class AccountResource {
                 .orElseGet(() -> userRepository.findOneByEmailIgnoreCase(managedUserVM.getEmail())
                         .map(user -> new ResponseEntity<>("email address already in use", textPlainHeaders, HttpStatus.BAD_REQUEST))
                         .orElseGet(() -> {
-                            log.info("Login: " + managedUserVM.getLogin());
-                            log.info("Password: " + managedUserVM.getPassword());
                             User user = userService
                                     .createUser(managedUserVM.getLogin(), managedUserVM.getEmail().toLowerCase(),
                                     managedUserVM.getPassword()/*, managedUserVM.getFirstName(), managedUserVM.getLastName()*/

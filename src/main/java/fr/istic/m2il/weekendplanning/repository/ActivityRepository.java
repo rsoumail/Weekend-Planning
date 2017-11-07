@@ -10,6 +10,6 @@ import java.util.Optional;
  * Spring Data JPA repository for the Activity entity.
  */
 @Repository
-public interface ActivityRepository extends JpaRepository<Activity, Long> {
+public interface ActivityRepository extends JpaRepository<Activity, String> {
     //<OPtional> Activity findOne(Activity activity);
 }
