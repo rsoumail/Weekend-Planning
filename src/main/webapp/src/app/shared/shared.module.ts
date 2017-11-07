@@ -6,10 +6,10 @@ import {
     //AccountService,
     //UserService,
     //StateStorageService,
-    LoginService,
+    //LoginService,
   //  Principal,
   //  HasAnyAuthorityDirective,
-    LoginComponent
+    //LoginComponent
    } from './';
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import {
 
   // declarations: []
   providers: [
-        LoginService,
+        //LoginService,
         // AccountService,
         // StateStorageService,
         // Principal,
