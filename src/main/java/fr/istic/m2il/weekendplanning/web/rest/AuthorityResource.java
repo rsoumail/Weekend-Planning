@@ -46,7 +46,7 @@ public class AuthorityResource {
         }else {
 
             authorityRepository.save(authority);
-            return ResponseEntity.created(new URI("/api/autorities/" + authority.getName()))
+            return ResponseEntity.created(new URI("/api/authorities/" + authority.getName()))
                     .headers(HeaderUtil.createAlert( "A authority is created with identifier " + authority.getName(), authority.getName()))
                     .body(authority);
         }

@@ -1,16 +1,12 @@
 package fr.istic.m2il.weekendplanning.domain;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Size;
-import javax.persistence.GeneratedValue;
 
-
+@MappedSuperclass
 public abstract class Person {
 
     @Size(max = 50)

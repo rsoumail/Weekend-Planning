@@ -2,11 +2,13 @@ package fr.istic.m2il.weekendplanning.service;
 
 import fr.istic.m2il.weekendplanning.config.Constants;
 import fr.istic.m2il.weekendplanning.domain.Activity;
+import fr.istic.m2il.weekendplanning.domain.Authority;
 import fr.istic.m2il.weekendplanning.domain.User;
 
 import fr.istic.m2il.weekendplanning.repository.ActivityRepository;
+import fr.istic.m2il.weekendplanning.repository.AuthorityRepository;
 import fr.istic.m2il.weekendplanning.repository.UserRepository;
-//import fr.istic.m2il.weekendplanning.security.SecurityUtils;
+import fr.istic.m2il.weekendplanning.security.SecurityUtils;
 import fr.istic.m2il.weekendplanning.service.dto.UserDTO;
 import fr.istic.m2il.weekendplanning.service.util.RandomUtil;
 import org.slf4j.Logger;
@@ -35,7 +37,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-
+    private final AuthorityRepository authorityRepository;
 
     private final PasswordEncoder passwordEncoder ;
 
@@ -44,24 +46,23 @@ public class UserService {
 
    // private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, ActivityRepository activityRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, ActivityRepository activityRepository, AuthorityRepository authorityRepository,PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.activityRepository = activityRepository;
+        this.authorityRepository = authorityRepository;
        // this.cacheManager = cacheManager;
     }
 
-    public User createUser(String login, String email,  String password/*, String firstName, String lastName*/) {
+    public User createUser(String login, String email,  String password, String firstName, String lastName) {
 
         User newUser = new User();
-        newUser.getAuthorities();
+        newUser.getAuthorities().add(authorityRepository.findOneAuthoritieByName("user").get());
         String encryptedPassword = passwordEncoder.encode(password);
-        log.info("LOG PASS ENCODE", encryptedPassword);
         newUser.setLogin(login);
-        // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
-        /*newUser.setFirstName(firstName);
-        newUser.setLastName(lastName);*/
+        newUser.setFirstName(firstName);
+        newUser.setLastName(lastName);
         newUser.setEmail(email);
  
 
@@ -84,8 +85,8 @@ public class UserService {
             );
             user.setActivities(activities);
         }*/
-        //String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
-        //user.setPassword(encryptedPassword);
+        String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
+        user.setPassword(encryptedPassword);
         userRepository.save(user);
         log.debug("Created Information for User: {}", user);
         return user;
@@ -101,13 +102,13 @@ public class UserService {
      * @param email email id of user
      */
     public void updateUser(String firstName, String lastName, String email) {
-        /*userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(user -> {
+        userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(user -> {
             user.setFirstName(firstName);
             user.setLastName(lastName);
             user.setEmail(email);
-            cacheManager.getCache("users").evict(user.getLogin());
+            //cacheManager.getCache("users").evict(user.getLogin());
             log.debug("Changed Information for User: {}", user);
-        });*/
+        });
     }
 
     /**
@@ -157,6 +158,21 @@ public class UserService {
     @Transactional(readOnly = true)
     public Page<UserDTO> getAllManagedUsers(Pageable pageable) {
         return userRepository.findAllByLoginNot(pageable, Constants.ANONYMOUS_USER).map(UserDTO::new);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<User> getUserWithAuthoritiesByLogin(String login) {
+        return userRepository.findOneWithAuthoritiesByLogin(login);
+    }
+
+    @Transactional(readOnly = true)
+    public User getUserWithAuthorities(Long id) {
+        return userRepository.findOneWithAuthoritiesById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public User getUserWithAuthorities() {
+        return userRepository.findOneWithAuthoritiesByLogin(SecurityUtils.getCurrentUserLogin()).orElse(null);
     }
 
 }
