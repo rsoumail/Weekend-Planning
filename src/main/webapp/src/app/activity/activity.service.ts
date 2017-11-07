@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 import { SERVER_API_URL } from '../app.constants';
 
 @Injectable()
@@ -8,8 +8,9 @@ export class ActivityService {
 
   constructor(private http: Http) {}
 
-  getAll(){
-    return this.http.get(SERVER_API_URL + 'api/activities');
+  getAll(): Observable<any>{
+    return this.http.get(SERVER_API_URL + 'api/activities').map((res: Response) => res.json());
+
   }
 
   add(activity: any): Observable <any> {
