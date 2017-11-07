@@ -26,6 +26,8 @@
     "font-awesome": "^4.7.0",
     "font-mfizz": "^2.4.1",
     "jquery": "^3.2.1",
+    "ng2-webstorage": "^1.8.0",
+    "ngx-cookie": "^1.0.1",
     "popper.js": "^1.12.5",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
