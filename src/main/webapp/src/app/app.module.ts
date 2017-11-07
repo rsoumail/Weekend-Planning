@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {AppComponent} from './app.component';
+import { ActivityService } from './activity/activity.service';
 import {ActivityComponent} from './activity/activity.component';
 import {PlaceComponent} from './place/place.component';
 import {SharedModule, LoginComponent} from './shared';
