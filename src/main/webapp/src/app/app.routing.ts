@@ -3,12 +3,13 @@ import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {ActivityComponent} from './activity/activity.component';
 import {PlaceComponent} from './place/place.component';
+import { NotificationComponent } from './notification/notification.component'
 import { LoginComponent } from './shared';
 
 
 const appRoutes: Routes = [
  {
-   path: 'register',
+   path: 'inscription',
    component: RegisterComponent
  },
  {
@@ -16,10 +17,17 @@ const appRoutes: Routes = [
    component: LoginComponent
  },
  {
-   path: 'lieu',
+   path: 'mes_lieux',
    component: PlaceComponent
  },
- {path: 'activity', component: ActivityComponent},
+ {
+   path: 'mes_sports',
+   component: ActivityComponent
+ },
+ {
+   path: 'mes_notifications',
+   component: NotificationComponent
+ },
 ];
 
 export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);

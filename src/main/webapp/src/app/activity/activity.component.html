@@ -1,29 +1,76 @@
-<div class="row justify-content-center">
- 	<div class="col-md-4">
- 		<h2>Choix des activités</h2>
- 	</div>
+<div class="row ">
+  <div class="col-md-4">
+    <h2>Mes sports</h2>
+  </div>
 </div>
 
 <div class="row justify-content-center">
-	<div class="col-md-3 form-group">
-		<label>Listes des Activités</label>
-		<select [(ngModel)]="selectedActivity" (change)="chargeActivite" class="form-control">
+  <div class="col-md-9">
+    <table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Nom</th>
+      <th>Niveau</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor = "let activity of activities; let i = index;">
+
+        <th scope="row">{{i+1}}</th>
+         <td >
+              {{activity.name}}
+         </td>
+         <td >
+
+         </td>
+
+    <tr>
+      <th scope="row">2</th>
+      <td>voile</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>plage</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+  <div class="">
+    <a (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="addActivityCollapse" class="pull-right"><i class="fa fa-plus fa-2x" style="color:blue" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<div id="addActivityCollapse" [ngbCollapse]="!isCollapsed">
+  <div class="row justify-content-center">
+    <div class="col-md-8 form-group">
+      <label>Choisir une activité</label>
+      <select [(ngModel)]="selectedActivity" (change)="chargeActivite" class="form-control">
  		 <option *ngFor="let activity of activities" [ngValue]="activity.name"> {{activity.name}} </option>
 		</select>
-	</div>
+    </div>
 
-</div>
+  </div>
 
-<div class="row justify-content-center">
- <div class="col-md-3 form-group">
- 	<span >Vous avez selectionné l'activité: {{selectedActivity}}</span>
- 	<button type="button" (click)="AddActivity()" [disabled]="!isValidButton()" class="btn btn-primary">Ajouter l'activité</button>
- </div>
-</div>
-<div class="row justify-content-center">
-	<div class="col-md-3 form-group">
-	<ul>
-		<li *ngFor="let choice of userChoices"> {{choice}}</li>
-	</ul>
-	</div>
+  <div class="row justify-content-center">
+    <div class="col-md-8 form-group">
+      <span>Activité Sélectionné: {{selectedActivity}}</span>
+    </div>
+
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+        <button type="button" (click)="AddActivity()" [disabled]="!isValidButton()" class="btn btn-primary pull-right">Ajouter</button>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8 form-group">
+      <ul>
+        <li *ngFor="let choice of userChoices"> {{choice}}</li>
+      </ul>
+    </div>
+  </div>
 </div>

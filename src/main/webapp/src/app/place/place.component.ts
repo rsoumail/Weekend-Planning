@@ -67,7 +67,7 @@ export class PlaceComponent implements OnInit {
   }
 
   nextStep() {
-    this.router.navigateByUrl('/activity');
+    this.router.navigateByUrl('/mes_sports');
   }
 
   isEmpty() {
