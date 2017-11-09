@@ -58,6 +58,11 @@ public class User extends Person implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Activity> activities = new ArrayList<>();
 
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<PersistentToken> persistentTokens = new HashSet<>();
+
     @ManyToMany
     @JoinTable(
             name = "user_place",
