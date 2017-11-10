@@ -38,6 +38,7 @@ public class ActivityResource {
         newActivity.setTemperatureMax(activity.getTemperatureMax());
         newActivity.setWindMin(activity.getWindMin());
         newActivity.setWindMax(activity.getWindMax());
+        newActivity.setLevel(activity.getLevel());
         newActivity.setConditions(activity.getConditions());
         for(String string: activity.getConditions()){
             System.out.println("Condition: " + string);
