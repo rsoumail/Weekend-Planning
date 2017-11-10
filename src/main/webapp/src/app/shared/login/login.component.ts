@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private stateStorageService: StateStorageService,
+    //private stateStorageService: StateStorageService,
     private router: Router
   ) {
     this.credentials = {};
@@ -57,11 +57,11 @@ export class LoginComponent implements OnInit {
 
             // // previousState was set in the authExpiredInterceptor before being redirected to login modal.
             // // since login is succesful, go to stored previousState and clear previousState
-             const redirect = this.stateStorageService.getUrl();
-             if (redirect) {
-                 this.stateStorageService.storeUrl(null);
-                 this.router.navigate([redirect]);
-             }
+             // const redirect = this.stateStorageService.getUrl();
+             // if (redirect) {
+             //     this.stateStorageService.storeUrl(null);
+             //     this.router.navigate([redirect]);
+             // }
         }).catch(() => {
             this.authenticationError = true;
         });
