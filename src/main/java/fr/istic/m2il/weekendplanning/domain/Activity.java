@@ -38,11 +38,22 @@ public class Activity implements Serializable {
     @Column(name = "temperature_min", nullable = false)
     private Integer temperatureMin;
     @Column(name = "conditions")
-    @ElementCollection
+	@ElementCollection
     private List<String> conditions = new ArrayList<>();
 
     @ManyToMany(mappedBy = "activities")
     private List<User> users = new ArrayList<User>();
+    
+    @Column(name="level")
+    private Integer level;
+    
+    public Integer getLevel() {
+		return level;
+	}
+
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
 
     public String getName() {
         return name;
