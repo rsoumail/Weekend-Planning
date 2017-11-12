@@ -198,12 +198,12 @@ public class UserResource {
    }
    
    
-   @PutMapping("/update_user_activity/{id}/{name}")
+   @PutMapping("/update_user_activity/{id}/{idActivity}")
    @Produces("application/json")
    public  ResponseEntity<User> updateUserActivity(@RequestBody Object p,@PathVariable Long id,
-		   @PathVariable String name){
+		   @PathVariable Long idActivity){
    	User user = userRepository.findOne(id);
-   	Activity activity = activityRepository.findOne(name);
+   	Activity activity = activityRepository.findOne(idActivity);
    	List<Activity> activities = user.getActivities();
    	if(!activities.contains(activity)) {
    		System.out.println("added to user :"+activities.add(activity));

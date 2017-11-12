@@ -13,12 +13,6 @@ export class ActivityService {
 
   }
 
-  add(id: any, activity: any): Observable<any> {
-    return this.http.put(SERVER_API_URL + '/add_activity/' + id,{})
-      .map(this.extractData)
-      .catch(this.handleError);;
-  }
-
   getUserActivities(id: any): Observable<any> {
     return this.http.get(SERVER_API_URL + 'api/user_activities/' + id).map((res: Response) => res.json());
   }

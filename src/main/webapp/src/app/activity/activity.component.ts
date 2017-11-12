@@ -68,7 +68,7 @@ export class ActivityComponent implements OnInit {
   
   
   addActivity(){
-    this.ActivityService.updateUser(this.currentAccount, this.selectedActivity).subscribe((response) => {
+    this.ActivityService.updateUser(this.currentAccount, this.selectedActivity.id).subscribe((response) => {
       console.log(response);
       this.getUserActivities(this.currentAccount);
     }, (response) => {
