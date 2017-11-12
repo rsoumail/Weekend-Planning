@@ -37,15 +37,6 @@ public class PlaceResource {
 	public PlaceResource(PlaceRepository PlaceRepository) {
 		this.placeRepository = PlaceRepository;
 	}
-//	
-////	@PostMapping("/places")
-////	public ResponseEntity choisePlaces(@Valid @RequestMapping ManagedUserVM managedUserVM) throws URISyntaxException{
-////		if(managedUserVM.getId() != null) {
-////			return ResponseEntity.badRequest()
-////					.
-////		}
-////	}
-//    
     @GetMapping("/places")
     //@Timed
     public ResponseEntity<List<Place>> getAllPlace(Pageable pageable) {
@@ -64,5 +55,6 @@ public class PlaceResource {
     	placeRepository.save(newplace);
         return new ResponseEntity<Place>(newplace, HttpStatus.OK);
     }
+    
     
 }
