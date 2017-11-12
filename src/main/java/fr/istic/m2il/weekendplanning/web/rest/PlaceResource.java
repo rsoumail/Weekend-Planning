@@ -51,4 +51,14 @@ public class PlaceResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
     
+    @PostMapping("/add_place")
+    public  ResponseEntity<Place> addPlace(@RequestBody Place place){
+    	List<Place> places = placeRepository.findAll();
+    	Place newplace = new Place();
+    	newplace.setNom(place.getNom());
+    	newplace.setCode(place.getCode());
+    	placeRepository.save(newplace);
+        return new ResponseEntity<Place>(newplace, HttpStatus.OK);
+    }
+    
 }

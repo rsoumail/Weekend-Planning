@@ -29,6 +29,22 @@ export class PlaceService {
 //    return this.http.post(SERVER_API_URL + 'api/place',{id:"2",name:"ffff"});
 //  }
   
-
+  addBookWithObservable(): Observable<any> {
+    var place = {nom:"nom3", code:8};
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(SERVER_API_URL + 'api/', place, options)
+               .map(this.extractData)
+               .catch(this.handleErrorObservable);
+  } 
+  
+      private extractData(res: Response) {
+  let body = res.json();
+        return body.data || {};
+    }
+    private handleErrorObservable (error: Response | any) {
+  console.error(error.message || error);
+  return Observable.throw(error.message || error);
+    }
 
 }
