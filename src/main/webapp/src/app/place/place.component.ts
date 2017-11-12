@@ -44,6 +44,7 @@ export class PlaceComponent implements OnInit {
     this.http.get(this.urlDepartements).subscribe(data => this.listDepartements = data);
     this.information = 'la region: '.concat(this.selectedRegion.nom);
     this.selected = this.selectedRegion;
+    this.regionToCommunes(this.selectedRegion);
   }
 
   chargerCom() {
@@ -65,8 +66,8 @@ export class PlaceComponent implements OnInit {
 
   setChoice() {
     if (this.selected != null) {
-//      this.userChoices.add(this.selected);
-//      console.log('pushed');
+      //      this.userChoices.add(this.selected);
+      //      console.log('pushed');
       this.selected = null;
       //this.service.updateUserPlaces();
     }
@@ -94,9 +95,9 @@ export class PlaceComponent implements OnInit {
       this.getUserChoices();
     });
   }
-  
+
   getUserChoices() {
-      this.service.getUserPlaces(this.currentAccount).subscribe((response) => {
+    this.service.getUserPlaces(this.currentAccount).subscribe((response) => {
       // this.activities = data;
       console.log(response);
       // if(response.status == 200)
@@ -107,8 +108,38 @@ export class PlaceComponent implements OnInit {
       console.log(response);
     });;
   }
-  
+
   updateUser() {
-    
+    this.service.updateUser(this.currentAccount, this.selected.nom, this.selected.code).subscribe((response) => {
+      this.getUserChoices();
+      console.log(response);
+      this.getUserChoices();
+    }, (response) => {
+      console.log(response);
+    });
   }
+
+
+  regionToCommunes(reg) {
+    //this.funct(reg);
+  }
+
+  departToCommunes(dep) {
+    var coms: Object;
+    this.urlCommunes = PLACE_API_URL + 'departements/'.concat(dep.code).concat('/communes?fields=nom,code');
+    this.http.get(this.urlCommunes).subscribe(data => coms = data);
+    return coms;
+  }
+
+
+  regionTodep(reg) {
+    var deps = null;
+    this.urlDepartements = PLACE_API_URL + 'regions/'.concat(reg.code).concat('/departements?fields=nom,code');
+    this.http.get(this.urlDepartements)
+      .toPromise()
+      .then(response => console.log(response))
+    console.log(deps);
+    return deps;
+  }
+
 }

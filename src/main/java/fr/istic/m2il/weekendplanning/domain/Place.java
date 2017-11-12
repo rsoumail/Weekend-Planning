@@ -1,5 +1,7 @@
 package fr.istic.m2il.weekendplanning.domain;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,8 +20,8 @@ public class Place {
     private String nom;
     private String code;
     
-//    @ManyToMany(mappedBy = "user")
-//    private List<User> users;
+    @ManyToMany(mappedBy = "places")
+    private List<User> users;
 
     public String getNom() {
         return nom;

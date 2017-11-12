@@ -37,18 +37,8 @@ export class ActivityComponent implements OnInit {
 
   getUserActivities(id) {
     this.ActivityService.getUserActivities(id).subscribe((response) => {
+      console.log(response);
       this.userActivities = response;
-      console.log(response);
-    });
-
-    this.ActivityService.getUserActivities(this.currentAccount).subscribe((response) => {
-      // this.activities = data;
-      console.log(response);
-      // if(response.status == 200)
-      this.userActivities = response;
-      console.log(response);
-      // else
-      //   this.activities = {}
     }, (response) => {
       this.userActivities = null;
       console.log(response);
@@ -63,18 +53,13 @@ export class ActivityComponent implements OnInit {
       this.currentAccount = account.id;
       this.getUserActivities(this.currentAccount);
       console.log(account.id);
-      this.addActivity();
     });
   }
 
   getAllPlaces() {
     this.ActivityService.getAll().subscribe((response) => {
-      // this.activities = data;
       console.log(response);
-      // if(response.status == 200)
       this.activities = response;
-      // else
-      //   this.activities = {}
     }, (response) => {
       this.activities = {};
       console.log(response);
@@ -83,9 +68,13 @@ export class ActivityComponent implements OnInit {
   
   
   addActivity(){
-    var activity = new Activity("natation",2,{});
-    this.ActivityService.add("2",activity);
-      this.selectedActivity =null;
+    this.ActivityService.updateUser(this.currentAccount, this.selectedActivity).subscribe((response) => {
+      console.log(response);
+      this.getUserActivities(this.currentAccount);
+    }, (response) => {
+      console.log(response);
+    });
+    this.selectedActivity =null;
   }
 
 }
