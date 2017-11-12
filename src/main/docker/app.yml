@@ -1,10 +1,15 @@
 version: '3'
 services:
-    weekendplanning-app:
-        image: weekendplanning
+    weekendplanning-app-back:
+        image: weekendplanning-back
         environment:
         ports:
             - 80:80
+    weekendplanning-app-front:
+        image: weekendplanning-front
+        environnement:
+        ports:
+            - 4200:4200
     weekendplanning-mysql:
         extends:
             file: mysql.yml

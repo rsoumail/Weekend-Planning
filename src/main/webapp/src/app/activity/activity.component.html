@@ -16,7 +16,7 @@
   </thead>
   <tbody>
 
-    <tr *ngFor = "let activity of activities; let i = index;">
+    <tr *ngFor = "let activity of userActivities; let i = index;">
 
         <th scope="row">{{i+1}}</th>
          <td >
@@ -52,7 +52,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-md-8">
-        <button type="button" (click)="AddActivity()" [disabled]="!isValidButton()" class="btn btn-primary pull-right">Ajouter</button>
+        <button type="button" (click)="addActivity()" [disabled]="!isValidButton()" class="btn btn-primary pull-right">Ajouter</button>
     </div>
   </div>
   <div class="row justify-content-center">

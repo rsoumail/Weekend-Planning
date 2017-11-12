@@ -1,5 +1,7 @@
 package fr.istic.m2il.weekendplanning.web.rest;
 
+import fr.istic.m2il.weekendplanning.domain.Activity;
+import fr.istic.m2il.weekendplanning.domain.Place;
 import fr.istic.m2il.weekendplanning.domain.User;
 import fr.istic.m2il.weekendplanning.repository.UserRepository;
 import fr.istic.m2il.weekendplanning.service.UserService;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -105,9 +108,50 @@ public class UserResource {
     /**
      * POST
      */
-   /* @PutMapping("/users")
-    public ResponseEntity updateUser(){
+   @PutMapping("/users/{id}/{name}/")
+    public ResponseEntity<User> updateUser(@PathVariable Long id,@PathVariable String name,@RequestBody User k){
+	   
+	   User user = userRepository.findOne(id);
+		if (null == user) {
+			return new ResponseEntity("No User found for ID " + id, HttpStatus.NOT_FOUND);
+		}
 
+	   List<Place> places = user.getPlaces();
+	   user.setFirstName(name);
+	   userService.updateUser(new UserDTO(user));
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 
-    }*/
+    }
+   
+   //get all activities of user of id = {id}
+   @GetMapping("/user_activities/{id}")
+   @Produces("application/json")
+   public ResponseEntity<List<Activity>> getUserActivity(@PathVariable Long id){
+       User user = userRepository.findOne(id);
+       List<Activity> activities = user.getActivities();
+	   return new ResponseEntity<List<Activity>>(activities, HttpStatus.OK);
+   }
+   
+   @PutMapping("/add_activity/{id}")
+   @Produces("application/json")
+   public ResponseEntity<List<Activity>> addActivityToUser(@PathVariable Long id){
+	   User user = userRepository.findOne(id);
+	   Activity act = new Activity();
+	   act.setName("natation");
+	   act.setLevel(2);
+	   List<Activity> activities = user.getActivities();
+	   activities.add(act);
+	   user.setActivities(activities);
+	   userService.updateUser(new UserDTO(user));
+	   return new ResponseEntity<List<Activity>>(activities, HttpStatus.OK);
+   }
+   
+   //get all places of user of id = {id}
+   @GetMapping("/user_places/{id}")
+   @Produces("application/json")
+   public ResponseEntity<List<Place>> getUserPlace(@PathVariable Long id){
+       User user = userRepository.findOne(id);
+       List<Place> places = user.getPlaces();
+	   return new ResponseEntity<List<Place>>(places, HttpStatus.OK);
+   }
 }
