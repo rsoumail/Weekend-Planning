@@ -12,7 +12,7 @@ ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
 # ADD init_db.sh /tmp/init_db.sh
 # RUN /tmp/init_db.sh
 
-ADD *.war /app.war
+ADD target/*.war /app.war
 
 EXPOSE 8080
 #CMD echo "The application will start in ${JHIPSTER_SLEEP}s..." && \

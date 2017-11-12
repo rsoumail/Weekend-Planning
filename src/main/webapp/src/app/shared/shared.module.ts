@@ -31,8 +31,8 @@ import { UserRouteAccessService } from './auth/user-route-access-service';
   ],
 
   declarations: [
-    LoginComponent,
-    HasAnyAuthorityDirective
+    //LoginComponent,
+    //HasAnyAuthorityDirective
   ],
 
   providers: [
@@ -47,8 +47,8 @@ import { UserRouteAccessService } from './auth/user-route-access-service';
   ],
   exports: [
         SharedLibsModule,
-        LoginComponent,
-        HasAnyAuthorityDirective,
+        //LoginComponent,
+        //HasAnyAuthorityDirective,
     ],
   entryComponents: [LoginComponent],
 
