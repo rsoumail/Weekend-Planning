@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { LoginService } from './login.service';
 import { StateStorageService } from '../auth/state-storage.service';
+//import { EventManager } from '../event-manager.service'
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     //private stateStorageService: StateStorageService,
-    private router: Router
+    private router: Router,
+    //private eventManager: EventManager
   ) {
     this.credentials = {};
    }
@@ -43,26 +45,19 @@ export class LoginComponent implements OnInit {
             }
             this.router.navigate(['mes_lieux']);
 
-  //           // this.eventManager.broadcast({
-  //           //     name: 'authenticationSuccess',
-  //           //     content: 'Sending Authentication Success'
-  //           // });
+            // this.eventManager.broadcast({
+            //     name: 'authenticationSuccess',
+            //     content: 'Sending Authentication Success'
+            // });
 
-            // // previousState was set in the authExpiredInterceptor before being redirected to login modal.
-            // // since login is succesful, go to stored previousState and clear previousState
-<<<<<<< 4822da83f70d41fa468d4f200c20df7bbd9a021b
-             // const redirect = this.stateStorageService.getUrl();
-             // if (redirect) {
-             //     this.stateStorageService.storeUrl(null);
-             //     this.router.navigate([redirect]);
-             // }
-=======
+            // previousState was set in the authExpiredInterceptor before being redirected to login modal.
+            // since login is succesful, go to stored previousState and clear previousState
             //  const redirect = this.stateStorageService.getUrl();
             //  if (redirect) {
             //      this.stateStorageService.storeUrl(null);
             //      this.router.navigate([redirect]);
             //  }
->>>>>>> Docker configuration et mise à jour des associations
+
         }).catch(() => {
             this.authenticationError = true;
         });

@@ -1,10 +1,10 @@
-import {RegisterComponent } from './account';
-import {ModuleWithProviders} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {ActivityComponent} from './activity/activity.component';
-import {PlaceComponent} from './place/place.component';
+import { RegisterComponent } from './account';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ActivityComponent } from './activity/activity.component';
+import { PlaceComponent } from './place/place.component';
 import { NotificationComponent } from './notification/notification.component';
-import { LoginComponent } from './shared';
+import { LoginComponent } from './shared/login/login.component';
 
 
 const appRoutes: Routes = [
@@ -14,7 +14,11 @@ const appRoutes: Routes = [
  },
  {
    path: '',
-   component: LoginComponent
+   component: LoginComponent,
+   data: {
+       authorities: [],
+       pageTitle: 'Connexion'
+   }
  },
  {
    path: 'mes_lieux',

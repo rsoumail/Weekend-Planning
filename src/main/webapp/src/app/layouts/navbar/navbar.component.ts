@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {
   LoginService
-} from '../../shared';
+} from '../../shared/login/login.service';
 
 @Component({
   selector: 'app-navbar',
