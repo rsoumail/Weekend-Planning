@@ -146,7 +146,7 @@ public class UserResource {
 	   return new ResponseEntity<List<Activity>>(activities, HttpStatus.OK);
    }
    
-   //get all activities of user of id = {id}
+   //get all places of user of id = {id}
    @GetMapping("/user_places/{id}")
    @Produces("application/json")
    public ResponseEntity<List<Place>> getUserPlace(@PathVariable Long id){
