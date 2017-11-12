@@ -36,7 +36,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @EntityGraph(attributePaths = "authorities")
     @Cacheable(cacheNames="users")
     Optional<User> findOneWithAuthoritiesByLogin(String login);
-    
-    
-    
 }

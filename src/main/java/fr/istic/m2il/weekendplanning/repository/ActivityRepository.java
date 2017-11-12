@@ -11,5 +11,4 @@ import java.util.Optional;
  */
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
-    //<OPtional> Activity findOne(Activity activity);
 }
