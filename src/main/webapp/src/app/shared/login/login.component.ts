@@ -18,24 +18,17 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    // private stateStorageService: StateStorageService,
+    //private stateStorageService: StateStorageService,
     private router: Router
   ) {
     this.credentials = {};
    }
 
    ngOnInit() {
-  //   this.credentials = {};
    }
 
    login() {
-  //   this.credentials.username = this.username;
-  //   this.credentials.password = this.password;
-  //   // this.loginService.login(this.credentials).subscribe((response) => {
-  //   //
-  //   // }, (response) => {});
-  //   //   this.authenticationError = true;
-  //   }
+
 
   this.loginService.login({
             username: this.username,
@@ -57,11 +50,19 @@ export class LoginComponent implements OnInit {
 
             // // previousState was set in the authExpiredInterceptor before being redirected to login modal.
             // // since login is succesful, go to stored previousState and clear previousState
+<<<<<<< 4822da83f70d41fa468d4f200c20df7bbd9a021b
              // const redirect = this.stateStorageService.getUrl();
              // if (redirect) {
              //     this.stateStorageService.storeUrl(null);
              //     this.router.navigate([redirect]);
              // }
+=======
+            //  const redirect = this.stateStorageService.getUrl();
+            //  if (redirect) {
+            //      this.stateStorageService.storeUrl(null);
+            //      this.router.navigate([redirect]);
+            //  }
+>>>>>>> Docker configuration et mise à jour des associations
         }).catch(() => {
             this.authenticationError = true;
         });
