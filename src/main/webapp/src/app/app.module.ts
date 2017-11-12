@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {Ng2Webstorage} from 'ngx-webstorage';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -62,6 +63,7 @@ import { appRouting } from './app.routing';
     appRouting,
     SharedLibsModule,
     BrowserModule,
+    Ng2Webstorage,
   //  SharedModule,
     LayoutsModule,
     AccountModule,
