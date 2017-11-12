@@ -54,7 +54,7 @@ public class User extends Person implements Serializable {
     @JoinTable(
             name = "user_activity",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "activity_name", referencedColumnName = "name")})
+            inverseJoinColumns = {@JoinColumn(name = "activity_id", referencedColumnName = "id")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Activity> activities = new ArrayList<>();
 
@@ -67,7 +67,7 @@ public class User extends Person implements Serializable {
     @JoinTable(
             name = "user_place",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "place_name", referencedColumnName = "nom")})
+            inverseJoinColumns = {@JoinColumn(name = "place_id", referencedColumnName = "id")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Place> places = new ArrayList<Place>();
 
@@ -124,7 +124,7 @@ public class User extends Person implements Serializable {
     @JoinTable(
             name = "user_authority",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
+            inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
