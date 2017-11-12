@@ -54,7 +54,7 @@ public class User extends Person implements Serializable {
     @JoinTable(
             name = "user_activity",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "activity_name", referencedColumnName = "name")})
+            inverseJoinColumns = {@JoinColumn(name = "activity_id", referencedColumnName = "id")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Activity> activities = new ArrayList<>();
 

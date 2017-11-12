@@ -22,9 +22,12 @@ public class Activity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @NotNull
     @Size(min = 0, max = 50)
-    @Id
     @Column(length = 50)
     private String name;
 
@@ -117,5 +120,13 @@ public class Activity implements Serializable {
 
     public void setConditions(List<String> conditions) {
         this.conditions = conditions;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
