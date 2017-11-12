@@ -29,12 +29,12 @@ export class LoginService {
     }
 
     logout() {
-      console.log("LOGOUT");
+      console.log('LOGOUT');
         if (this.principal.isAuthenticated()) {
             this.authServerProvider.logout().subscribe();
-            console.log("LOGOUT");
+            console.log('LOGOUT');
         }
-        console.log("LOGOUT");
+        console.log('LOGOUT');
         this.principal.authenticate(null);
     }
 }

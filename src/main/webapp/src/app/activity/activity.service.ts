@@ -1,20 +1,43 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../app.constants';
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {SERVER_API_URL} from '../app.constants';
 
 @Injectable()
 export class ActivityService {
 
   constructor(private http: Http) {}
 
-  getAll(): Observable<any>{
+  getAll(): Observable<any> {
     return this.http.get(SERVER_API_URL + 'api/activities').map((res: Response) => res.json());
 
   }
 
-  add(activity: any): Observable <any> {
-    return this.http.post(SERVER_API_URL + 'api/activities', activity);
+  add(id: any, activity: any): Observable<any> {
+    return this.http.put(SERVER_API_URL + '/add_activity/' + id,{})
+      .map(this.extractData)
+      .catch(this.handleError);;
   }
 
+  getUserActivities(id: any): Observable<any> {
+    return this.http.get(SERVER_API_URL + 'api/user_activities/' + id).map((res: Response) => res.json());
+  }
+
+
+  private extractData(res: Response) {
+    if (res.status < 200 || res.status >= 300) {
+      throw new Error('Bad response status: ' + res.status);
+    }
+    console.log(res);
+    let body = res.json();
+    return body.data || {};
+  }
+
+  private handleError(error: any) {
+    // In a real world app, we might send the error to remote logging infrastructure
+    let errMsg = error.message || 'Server error';
+    console.error(errMsg); // log to console instead
+    console.log(errMsg);
+    return Observable.throw(errMsg);
+  }
 }

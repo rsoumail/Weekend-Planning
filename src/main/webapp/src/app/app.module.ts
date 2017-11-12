@@ -7,6 +7,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import { ActivityService } from './activity/activity.service';
+import { PlaceService } from './place/place.service';
 import {ActivityComponent} from './activity/activity.component';
 import {PlaceComponent} from './place/place.component';
 import {SharedModule, LoginComponent} from './shared';
@@ -14,9 +15,10 @@ import {LayoutsModule, FooterComponent, HeaderComponent, NavbarComponent} from '
 import {AccountModule, RegisterComponent} from './account';
 
 
-//import { NotificationService } from './notification/notification.service'
+// import { NotificationService } from './notification/notification.service'
 import { NotificationComponent } from './notification/notification.component';
 import { appRouting } from './app.routing';
+import { HttpModule } from '@angular/http';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 
 
@@ -28,6 +30,7 @@ import { appRouting } from './app.routing';
     LayoutsModule,
     AccountModule,
     SharedModule,
+    HttpModule,
     HttpClientModule,
     NgbModule.forRoot(),
   ],
@@ -42,7 +45,7 @@ import { appRouting } from './app.routing';
     NavbarComponent,
     NotificationComponent,
   ],
-  providers: [ActivityService, /*NotificationService*/],
+  providers: [ActivityService,PlaceService, HttpModule /*NotificationService*/],
 
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]

@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    //private stateStorageService: StateStorageService,
+    // private stateStorageService: StateStorageService,
     private router: Router
   ) {
     this.credentials = {};
@@ -40,10 +40,10 @@ export class LoginComponent implements OnInit {
   this.loginService.login({
             username: this.username,
             password: this.password,
-            //rememberMe: this.rememberMe
+            // rememberMe: this.rememberMe
         }).then(() => {
             this.authenticationError = false;
-            //this.activeModal.dismiss('login success');
+            // this.activeModal.dismiss('login success');
             if (this.router.url === '/inscription' || (/^\/activate\//.test(this.router.url)) ||
                 (/^\/reset\//.test(this.router.url))) {
                 this.router.navigate(['']);
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
             password: null,
         };
         this.authenticationError = false;
-        //this.activeModal.dismiss('cancel');
+        // this.activeModal.dismiss('cancel');
     }
 
 }

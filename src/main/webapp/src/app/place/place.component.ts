@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpParams, HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {Principal} from '../shared/auth/principal.service';
+import {Component, OnInit} from '@angular/core';
+import {HttpParams, HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 import 'rxjs/add/operator/map';
-import { PLACE_API_URL } from './../app.constants';
+import {PLACE_API_URL} from './../app.constants';
+import {PlaceService} from './place.service';
+import {HttpModule} from '@angular/http';
 @Component({
   selector: 'app-place',
   templateUrl: './place.component.html',
   styleUrls: ['./place.component.css']
 })
 export class PlaceComponent implements OnInit {
+  currentAccount: any;
   userChoices = new Set();
   private urlCommunes: string;
   private urlDepartements: string;
@@ -23,10 +27,15 @@ export class PlaceComponent implements OnInit {
   selectedDep = null;
   selectedCom = null;
   params = new HttpParams();
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private principal: Principal,
+    private service: PlaceService) {}
 
   ngOnInit() {
     this.http.get(this.urlRegions).subscribe(data => this.listRegions = data);
+    this.getId();
   }
   chargerDep() {
     //    this.params.set('code', this.selectedRegion.code);
@@ -56,9 +65,10 @@ export class PlaceComponent implements OnInit {
 
   setChoice() {
     if (this.selected != null) {
-      this.userChoices.add(this.selected);
-      console.log('pushed');
+//      this.userChoices.add(this.selected);
+//      console.log('pushed');
       this.selected = null;
+      //this.service.updateUserPlaces();
     }
   }
 
@@ -72,5 +82,33 @@ export class PlaceComponent implements OnInit {
 
   isEmpty() {
     return (this.userChoices.size < 1);
+  }
+
+
+  getId() {
+    this.principal.identity(true).then((account) => {
+      // After the login the language will be changed to
+      // the language selected by the user during his registration
+      this.currentAccount = account.id;
+      console.log(account.id);
+      this.getUserChoices();
+    });
+  }
+  
+  getUserChoices() {
+      this.service.getUserPlaces(this.currentAccount).subscribe((response) => {
+      // this.activities = data;
+      console.log(response);
+      // if(response.status == 200)
+      this.userChoices = response;
+      // else
+      //   this.activities = {}
+    }, (response) => {
+      console.log(response);
+    });;
+  }
+  
+  updateUser() {
+    
   }
 }

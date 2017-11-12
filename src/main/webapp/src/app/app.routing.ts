@@ -3,7 +3,7 @@ import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {ActivityComponent} from './activity/activity.component';
 import {PlaceComponent} from './place/place.component';
-import { NotificationComponent } from './notification/notification.component'
+import { NotificationComponent } from './notification/notification.component';
 import { LoginComponent } from './shared';
 
 
