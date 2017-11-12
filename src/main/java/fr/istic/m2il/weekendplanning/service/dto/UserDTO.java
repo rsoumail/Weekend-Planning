@@ -3,6 +3,7 @@ package fr.istic.m2il.weekendplanning.service.dto;
 //import fr.istic.m2il.weekendplanning.config.Constants;
 import fr.istic.m2il.weekendplanning.domain.Activity;
 import fr.istic.m2il.weekendplanning.domain.Authority;
+import fr.istic.m2il.weekendplanning.domain.Place;
 import fr.istic.m2il.weekendplanning.domain.User;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -37,6 +38,7 @@ public class UserDTO {
     private List<Activity> activities ;
 
     private Set<String> authorities;
+
 
     public UserDTO() {
         // Empty constructor needed for Jackson.
@@ -123,4 +125,6 @@ public class UserDTO {
                 ", authorities=" + authorities +
                 "}";
     }
+
+
 }

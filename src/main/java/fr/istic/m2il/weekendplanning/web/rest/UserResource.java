@@ -3,6 +3,8 @@ package fr.istic.m2il.weekendplanning.web.rest;
 import fr.istic.m2il.weekendplanning.domain.Activity;
 import fr.istic.m2il.weekendplanning.domain.Place;
 import fr.istic.m2il.weekendplanning.domain.User;
+import fr.istic.m2il.weekendplanning.repository.ActivityRepository;
+import fr.istic.m2il.weekendplanning.repository.PlaceRepository;
 import fr.istic.m2il.weekendplanning.repository.UserRepository;
 import fr.istic.m2il.weekendplanning.service.UserService;
 import fr.istic.m2il.weekendplanning.service.dto.UserDTO;
@@ -43,10 +45,21 @@ public class UserResource {
     private final UserService userService;
     @Autowired
     private final UserRepository userRepository;
+    
+    @Autowired
+    private final PlaceRepository placeRepository;
+    
+    @Autowired
+    private final ActivityRepository activityRepository;
 
-    public UserResource(UserService userService, UserRepository userRepository) {
+    public UserResource(UserService userService,
+    		UserRepository userRepository,
+    		PlaceRepository placeRepository,
+    		ActivityRepository activityRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
+        this.placeRepository = placeRepository;
+        this.activityRepository = activityRepository;
     }
 
     /**
@@ -153,5 +166,50 @@ public class UserResource {
        User user = userRepository.findOne(id);
        List<Place> places = user.getPlaces();
 	   return new ResponseEntity<List<Place>>(places, HttpStatus.OK);
+   }
+   
+   
+   //get user by id
+   @GetMapping("/get_user/{id}")
+   @Produces("application/json")
+   public ResponseEntity<User> getUser(@PathVariable Long id){
+       User user = userRepository.findOne(id);
+	   return new ResponseEntity<User>(user, HttpStatus.OK);
+   }
+   
+   
+   @PutMapping("/update_user_place/{id}/{name}/{code}")
+   @Produces("application/json")
+   public  ResponseEntity<User> updateUserPlace(@RequestBody Object p,@PathVariable Long id,
+		   @PathVariable String name,@PathVariable String code){
+   	User user = userRepository.findOne(id);
+   	Place place = placeRepository.findByNameAndCode(name, code);
+   	if (place == null) {
+   	   	place = new Place();
+   	   	place.setCode(code);
+   	   	place.setNom(name);
+   	   	placeRepository.save(place);
+   	}
+   	List<Place> places = user.getPlaces();
+   	if(!places.contains(place)) places.add(place);
+   	user.setPlaces(places);
+   	userService.updateUser(new UserDTO(user));
+    return new ResponseEntity<User>(user, HttpStatus.OK);
+   }
+   
+   
+   @PutMapping("/update_user_activity/{id}/{idActivity}")
+   @Produces("application/json")
+   public  ResponseEntity<User> updateUserActivity(@RequestBody Object p,@PathVariable Long id,
+		   @PathVariable Long idActivity){
+   	User user = userRepository.findOne(id);
+   	Activity activity = activityRepository.findOne(idActivity);
+   	List<Activity> activities = user.getActivities();
+   	if(!activities.contains(activity)) {
+   		System.out.println("added to user :"+activities.add(activity));
+   	}
+   	user.setActivities(activities);
+    userRepository.save(user);
+    return new ResponseEntity<User>(user, HttpStatus.OK);
    }
 }
