@@ -86,7 +86,7 @@ import { appRouting } from './app.routing';
     Principal,
     AccountService,
     AuthServerProvider,
-    //UserRouteAccessService
+    UserRouteAccessService
   ],
 
   schemas: [NO_ERRORS_SCHEMA],

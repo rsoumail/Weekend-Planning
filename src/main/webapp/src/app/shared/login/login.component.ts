@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { LoginService } from './login.service';
 import { StateStorageService } from '../auth/state-storage.service';
-//import { EventManager } from '../event-manager.service'
+import { EventManager } from '../event-manager.service'
 
 @Component({
   selector: 'app-login',

@@ -18,6 +18,7 @@ export class LoginService {
             this.authServerProvider.login(credentials).subscribe((data) => {
                 this.principal.identity(true).then((account) => {
                     resolve(data);
+                    console.log(this.principal);
                 });
                 return cb();
             }, (err) => {
@@ -31,7 +32,6 @@ export class LoginService {
     logout() {
         if (this.principal.isAuthenticated()) {
             this.authServerProvider.logout().subscribe();
-            console.log("LOGOUT OK");
         }
         this.principal.authenticate(null);
     }

@@ -32,7 +32,7 @@ import { UserRouteAccessService } from './auth/user-route-access-service';
 
   declarations: [
     //LoginComponent,
-    //HasAnyAuthorityDirective
+    HasAnyAuthorityDirective
   ],
 
   providers: [
