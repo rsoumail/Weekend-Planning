@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -138,5 +139,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public JavaMailSenderImpl mailSender() {
+        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
+        javaMailSender.getJavaMailProperties().setProperty("mail.smtp.starttls.enable","true");
+        javaMailSender.setHost("smtp.gmail.com");
+        javaMailSender.setUsername("m2ilweekendplanning@gmail.com");
+        javaMailSender.setPassword("foBdHo8Ql637");
+        //javaMailSender.getJavaMailProperties().setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        javaMailSender.getJavaMailProperties().setProperty("mail.smtp.auth", "true");
+        javaMailSender.setPort(587);
+
+        try {
+            //javaMailSender.testConnection();
+
+        }catch (Exception e){
+
+        }
+
+        return javaMailSender;
     }
 }

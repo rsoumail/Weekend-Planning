@@ -27,7 +27,7 @@ public class WeatherService {
     @Autowired
     private CityService cityService;
 
-    @Scheduled(cron = "0 31 19 * * 0-2")
+    @Scheduled(cron = "0 20 21 * * 0-2")
     public void service() {
         cityService.execute();
     }

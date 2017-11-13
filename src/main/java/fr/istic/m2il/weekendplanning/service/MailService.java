@@ -36,19 +36,19 @@ public class MailService {
 
     //private final JHipsterProperties jHipsterProperties;
 
-   /* private final JavaMailSender javaMailSender;
+    private final JavaMailSender javaMailSender;
 
-    private final MessageSource messageSource;*/
+    private final MessageSource messageSource;
 
     //private final SpringTemplateEngine templateEngine;*/
-    /*public MailService(JavaMailSender javaMailSender,
-                       MessageSource messageSource *//*SpringTemplateEngine templateEngine*//*) {
+    public MailService(JavaMailSender javaMailSender,
+                       MessageSource messageSource /*SpringTemplateEngine templateEngine*/) {
 
        // this.jHipsterProperties = jHipsterProperties;
         this.javaMailSender = javaMailSender;
         this.messageSource = messageSource;
-        *//*this.templateEngine = templateEngine;*//*
-    }*/
+        //this.templateEngine = templateEngine;
+    }
 
     @Async
     public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
@@ -56,11 +56,11 @@ public class MailService {
             isMultipart, isHtml, to, subject, content);
 
         // Prepare message using a Spring helper
-        /*MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, CharEncoding.UTF_8);
             message.setTo(to);
-            message.setFrom("weekendplanning@email.fr");
+            message.setFrom("m2ilweekendplanning@email.com");
             message.setSubject(subject);
             message.setText(content, isHtml);
             javaMailSender.send(mimeMessage);
@@ -71,7 +71,7 @@ public class MailService {
             } else {
                 log.warn("Email could not be sent to user '{}': {}", to, e.getMessage());
             }
-        }*/
+        }
     }
 
     @Async

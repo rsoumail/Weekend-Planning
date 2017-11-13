@@ -26,9 +26,6 @@ public class CityService {
     @Autowired
     private MailService mailService;
 
-    @Autowired
-    private  SendMailSSL mail;
-
     private final Logger log = LoggerFactory.getLogger(CityService.class);
 
     final String PLACE_API_URL = "https://geo.api.gouv.fr/"; //https://geo.api.gouv.fr/regions?fields=nom,code&format=json
@@ -52,9 +49,10 @@ public class CityService {
                         for(Activity activity:activities){
                             List<User> receivers = userRepository.findAllByActivityAndPlace(activity.getName(), city.getNom());
                             for (User user : receivers) {
-                                /*mailService.sendEmail(user.getEmail(), "WeekendPlanning Notification",
+                                log.info("Je send le mail");
+                                mailService.sendEmail(user.getEmail(), "WeekendPlanning Notification",
                                         "Nous vous conseillons de faire du/de la" + activity.getName() +
-                                                "Ce weekend en date de " + w.getFcst_day_3().getDate(), false, true);*/
+                                                "Ce weekend en date de " + w.getFcst_day_3().getDate(), false, true);
                             }
                         }
                     }
