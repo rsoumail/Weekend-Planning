@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {Ng2Webstorage} from 'ngx-webstorage';
+//import {Ng2Webstorage} from 'ngx-webstorage';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,7 +15,7 @@ import { PlaceComponent } from './place/place.component';
    LoginService,
    AuthServerProvider,
    AccountService,
-   StateStorageService,
+   //StateStorageService,
    Principal,
    EventManager,
    UserRouteAccessService,
@@ -63,7 +63,7 @@ import { appRouting } from './app.routing';
     appRouting,
     SharedLibsModule,
     BrowserModule,
-    Ng2Webstorage,
+    //Ng2Webstorage,
   //  SharedModule,
     LayoutsModule,
     AccountModule,
@@ -86,7 +86,7 @@ import { appRouting } from './app.routing';
     Principal,
     AccountService,
     AuthServerProvider,
-    //UserRouteAccessService
+    UserRouteAccessService
   ],
 
   schemas: [NO_ERRORS_SCHEMA],

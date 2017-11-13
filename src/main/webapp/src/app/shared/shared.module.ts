@@ -16,7 +16,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SharedLibsModule } from './shared-libs.module'
 import { AuthServerProvider } from './auth/auth-session.service';
 import { AccountService } from './auth/account.service';
-import { StateStorageService } from './auth/state-storage.service';
+//import { StateStorageService } from './auth/state-storage.service';
 import { Principal } from './auth/principal.service';
 import { LoginComponent } from './login/login.component'
 import { LoginService } from './login/login.service';
@@ -32,13 +32,13 @@ import { UserRouteAccessService } from './auth/user-route-access-service';
 
   declarations: [
     //LoginComponent,
-    //HasAnyAuthorityDirective
+    HasAnyAuthorityDirective
   ],
 
   providers: [
     LoginService,
     AccountService,
-    StateStorageService,
+  //  StateStorageService,
     Principal,
     AuthServerProvider,
     EventManager,

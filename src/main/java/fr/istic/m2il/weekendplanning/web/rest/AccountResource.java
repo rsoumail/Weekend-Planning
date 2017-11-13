@@ -4,11 +4,13 @@ package fr.istic.m2il.weekendplanning.web.rest;
 import fr.istic.m2il.weekendplanning.domain.User;
 import fr.istic.m2il.weekendplanning.repository.UserRepository;
 import fr.istic.m2il.weekendplanning.service.UserService;
+import fr.istic.m2il.weekendplanning.service.WeatherService;
 import fr.istic.m2il.weekendplanning.service.dto.UserDTO;
 import fr.istic.m2il.weekendplanning.web.rest.vm.ManagedUserVM;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -76,7 +78,6 @@ public class AccountResource {
                 .map(user -> new ResponseEntity<>(new UserDTO(user), HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
     }
-
 
 
     private boolean checkPasswordLength(String password) {

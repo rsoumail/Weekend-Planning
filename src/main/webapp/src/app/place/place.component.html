@@ -44,11 +44,11 @@
     </table>
   </div>
   <div class="">
-    <a (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="addPlaceCollapse" class="pull-right"><i class="fa fa-plus fa-2x" style="color:green" aria-hidden="true"></i></a>
+    <a (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="addActivityCollapse" class="pull-right"><i class="fa fa-plus fa-2x" style="color:blue" aria-hidden="true"></i></a>
   </div>
 </div>
 
-<div id="addPlaceCollapse" [ngbCollapse]="!isCollapsed">
+<div id="addPlaceCollapse" [ngbCollapse]="isCollapsed">
   <div class="row justify-content-center">
     <div class="col-md-3 form-group">
       <label>Regions</label>
@@ -84,7 +84,7 @@
     </div>
   </div>
 
-  
+
 
   <div class="row justify-content-center">
     <div class="col-md-9">

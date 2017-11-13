@@ -7,7 +7,7 @@
 set -e
 set -x
 
-mysql_install_db
+mysqld --initialize-insecure --user=mysql
 
 # Start the MySQL daemon in the background.
 /usr/sbin/mysqld &
@@ -19,6 +19,8 @@ done
 
 # Permit root login without password from outside container.
 mysql -e "GRANT ALL ON *.* TO root@'%' IDENTIFIED BY '' WITH GRANT OPTION"
+
+
 
 # create the default database from the ADDed file.
 mysql < /tmp/weekendplanning_schema.sql
@@ -41,4 +43,4 @@ tar czvf default_mysql.tar.gz /var/lib/mysql
 # the tarfile contains the initialized state of the database.
 # when the container is started, if the database is empty (/var/lib/mysql)
 # then it is unpacked from default_mysql.tar.gz from
-# the ENTRYPOINT /tmp/run_db script
+# the ENTRYPOINT /tmp/run_db.sh script

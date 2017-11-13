@@ -24,8 +24,8 @@ export class AuthServerProvider {
         // logout from the server
         return this.http.post(SERVER_API_URL + 'api/logout', {}).map((response: Response) => {
             // to get a new csrf token call the api
-            // this.http.get(SERVER_API_URL + 'api/account').subscribe(() => {}, () => {});
-            // return response;
+             this.http.get(SERVER_API_URL + 'api/account').subscribe(() => {}, () => {});
+             return response;
         });
     }
 }
