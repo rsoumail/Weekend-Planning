@@ -19,7 +19,7 @@
 -- Table structure for table `activity`
 --
 
-CREATE database weekendplanning;
+CREATE database IF NOT EXISTS weekendplanning;
 use weekendplanning;
 
 DROP TABLE IF EXISTS `activity`;

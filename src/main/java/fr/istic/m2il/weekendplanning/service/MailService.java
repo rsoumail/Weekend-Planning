@@ -36,19 +36,19 @@ public class MailService {
 
     //private final JHipsterProperties jHipsterProperties;
 
-    //private final JavaMailSender javaMailSender;
+   /* private final JavaMailSender javaMailSender;
 
-    private final MessageSource messageSource;
+    private final MessageSource messageSource;*/
 
     //private final SpringTemplateEngine templateEngine;*/
-    public MailService(/*JavaMailSender javaMailSender*/
-                       MessageSource messageSource /*SpringTemplateEngine templateEngine*/) {
+    /*public MailService(JavaMailSender javaMailSender,
+                       MessageSource messageSource *//*SpringTemplateEngine templateEngine*//*) {
 
        // this.jHipsterProperties = jHipsterProperties;
-      /*  this.javaMailSender = javaMailSender;*/
+        this.javaMailSender = javaMailSender;
         this.messageSource = messageSource;
-        /*this.templateEngine = templateEngine;*/
-    }
+        *//*this.templateEngine = templateEngine;*//*
+    }*/
 
     @Async
     public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
