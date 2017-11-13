@@ -1,27 +1,48 @@
-## Fonctionalité
-Sign up
-Sign in
-Selection ensemble de lieu:
-	list
-	map
-	region
-Notifier l'user
-
-## taches
-Algo pour le choix des activ
-Modele, API, documentation (map, place, messaging...)
-
-Cron (tache bash mardi mercredi)
-Possibilité pour l'user de proposer un nouv activité
+##PROJET TAA-GLI: Planification de week-ends
 
 
-## remarques
+##INSTALLATION
+1.
+   Builder le projet par
+   
+   	Se placer à la racine du projet weekendplanning/
 
-Pour une activité il y a des contraintes meteologiques et geologiques. Exemple:
-	Activité voil : un peu de vent coté meteo mais, il faut de la flote coté lieu sinon il faut que notre BD contient uniquement des activités sans contraintes geologique
+		Lancer la commande : mvn package
 
-###############################################################################################################################
-PROJET TAA-GLI: Planification de week-ends
+2.
+   Application de frond end
+
+	   	Se placer dans le dossier weekendplanning/src/main/webapp/src/main/docker/
+
+				Lancer la commande : docker build -t weekendplanning-front .
+
+   Application de back end
+
+		Se placer dans le dossier weekendpalnning/target/
+
+			Lancer la commande : docker build -t weekendplanning-back .
+
+3.
+   Création du réseau pour les conteneurs 
+
+		Lancer la commande : docker netowrk create weekend-network
+	
+4.
+   Dans le dossier weekendplanning/src/main/webapp/src/main/docker/frontend/
+
+	   Lancement d'un conteneur
+
+			Lancer la commande : docker-compose -f app.yml up
+
+
+   Dans le dossier weekendplanning/src/main/webapp/src/main/docker/backend/
+
+		Etendre un conteneur
+
+		Lancer la commande : docker-compose -f app.yml down
+		
+
+##PRESENTATION
 
 Ce projet réalisé fait suite aux cours de TAA & GLI que nous avons eu en premier semestre. De ce fait nous étions amenée à mettre en place 
 les technologies recommandées par le projet. Pour celà nous avons réalisé l'architecture de l'application comme suite:
@@ -37,8 +58,6 @@ les technologies recommandées par le projet. Pour celà nous avons réalisé l'
 		Repositories: Les données de spring sur JPARepository
 
 		Services: L'archictecture du service REST à l'API
-
-		Swagger: 
 		
 	
 	=> Base de donnée

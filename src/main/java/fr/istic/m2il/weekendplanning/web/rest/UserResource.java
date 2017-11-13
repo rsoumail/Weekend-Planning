@@ -38,7 +38,6 @@ import javax.ws.rs.Produces;
 @RequestMapping("/api")
 public class UserResource {
 
-
 	private final Logger log = LoggerFactory.getLogger(UserResource.class);
 
 	private static final String ENTITY_NAME = "userManagement";
@@ -61,7 +60,7 @@ public class UserResource {
 		this.placeRepository = placeRepository;
 		this.activityRepository = activityRepository;
 	}
-
+	
 	/**
 	 * POST /users : Crée un nouvel utilsateur.
 	 * <p>
@@ -108,7 +107,6 @@ public class UserResource {
 	public Optional<User> get() {
 		return userRepository.findOneByLogin("");
 	}
-
 	 
 
     /**
@@ -126,13 +124,15 @@ public class UserResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
-    /**
-     * POST
-     */
-   @PutMapping("/users/{id}/{name}/")
-    public ResponseEntity<User> updateUser(@PathVariable Long id,@PathVariable String name,@RequestBody User k){
-	   
-	   User user = userRepository.findOne(id);
+   
+	
+	/**
+	 * PUT
+	 */
+	@PutMapping("/users/{id}/{name}/")
+	public ResponseEntity<User> updateUser(@PathVariable Long id, @PathVariable String name, @RequestBody User k) {
+
+		User user = userRepository.findOne(id);
 		if (null == user) {
 			return new ResponseEntity("No User found for ID " + id, HttpStatus.NOT_FOUND);
 		}
