@@ -34,7 +34,7 @@
 
 	Dans le dossier src/main/docker/backend/
 
-		Eteindre 
+		Etendre un conteneur
 
 		Commande : docker-compose -f app.yml down
 
