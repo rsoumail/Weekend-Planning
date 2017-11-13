@@ -21,6 +21,12 @@
 		Se placer dans le dossier weekendpalnning/target/
 
 			Lancer la commande : docker build -t weekendplanning-back .
+			
+   Proxy Nginx
+   
+        Se placer dans le dossier weekendplanning/src/main/webapp
+        
+            Lancer la commande : docker build -t weekendplanning-nginx .
 
 3.
    Création du réseau pour les conteneurs 
