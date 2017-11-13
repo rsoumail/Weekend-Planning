@@ -21,9 +21,45 @@ Pour une activité il y a des contraintes meteologiques et geologiques. Exemple:
 	Activité voil : un peu de vent coté meteo mais, il faut de la flote coté lieu sinon il faut que notre BD contient uniquement des activités sans contraintes geologique
 
 ###############################################################################################################################
-##INSTALLATION
+##PROJET TAA-GLI: Planification de week-ends
 
-PROJET TAA-GLI: Planification de week-ends
+
+##INSTALLATION
+1.
+   Lancement de la commande du projet
+
+		Faire un mvn package
+
+2.
+   Application de frond end
+
+	   	Dans le dossier webapp/src/main/docker/
+
+				Commande : docker build -t weekendplanning-front .
+
+   Application de back end
+
+		Dans le dossier weekendpalnning/target/
+
+			Commande : docker build -t weekendplanning-back .
+
+3.
+	Création du réseau
+
+		Commande : docker netowrk create weekend-network
+	
+	Dans le dossier src/main/docker/frontend/
+
+	   Lancement d'un conteneur
+
+			Commande : docker-compose -f app.yml up
+
+
+	Dans le dossier src/main/docker/backend/
+
+		Eteindre 
+
+		Commande : docker-compose -f app.yml down
 
 Ce projet réalisé fait suite aux cours de TAA & GLI que nous avons eu en premier semestre. De ce fait nous étions amenée à mettre en place 
 les technologies recommandées par le projet. Pour celà nous avons réalisé l'architecture de l'application comme suite:
