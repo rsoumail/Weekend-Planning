@@ -24,7 +24,7 @@
 			
    Proxy Nginx
    
-        Se placer dans le dossier weekendplanning/src/main/webapp
+        Se placer dans le dossier weekendplanning/src/main/webapp/nginx
         
             Lancer la commande : docker build -t weekendplanning-nginx .
 
