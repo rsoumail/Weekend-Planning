@@ -3,33 +3,36 @@
 
 ##INSTALLATION
 1.
-   Lancement de la commande du projet
+   Builder le projet par
+   
+   	Se placer à la racine du projet weekendplanning/
 
-		Faire un mvn package
+		Lancer la commande : mvn package
 
 2.
    Application de frond end
 
-	   	Dans le dossier webapp/src/main/docker/
+	   	Se placer dans le dossier weekendplanning/src/main/webapp/src/main/docker/
 
-				Commande : docker build -t weekendplanning-front .
+				Lancer la commande : docker build -t weekendplanning-front .
 
    Application de back end
 
-		Dans le dossier weekendpalnning/target/
+		Se placer dans le dossier weekendpalnning/target/
 
-			Commande : docker build -t weekendplanning-back .
+			Lancer la commande : docker build -t weekendplanning-back .
 
 3.
 	Création du réseau
 
-		Commande : docker netowrk create weekend-network
+		Lancer la commande : docker netowrk create weekend-network
 	
-	Dans le dossier src/main/docker/frontend/
+4.
+   Dans le dossier src/main/docker/frontend/
 
 	   Lancement d'un conteneur
 
-			Commande : docker-compose -f app.yml up
+			Lancer la commande : docker-compose -f app.yml up
 
 
 	Dans le dossier src/main/docker/backend/
@@ -37,6 +40,9 @@
 		Etendre un conteneur
 
 		Commande : docker-compose -f app.yml down
+		
+
+##PRESENTATION
 
 Ce projet réalisé fait suite aux cours de TAA & GLI que nous avons eu en premier semestre. De ce fait nous étions amenée à mettre en place 
 les technologies recommandées par le projet. Pour celà nous avons réalisé l'architecture de l'application comme suite:
@@ -52,8 +58,6 @@ les technologies recommandées par le projet. Pour celà nous avons réalisé l'
 		Repositories: Les données de spring sur JPARepository
 
 		Services: L'archictecture du service REST à l'API
-
-		Swagger: 
 		
 	
 	=> Base de donnée
