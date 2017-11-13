@@ -26,15 +26,17 @@ export class ActivityService {
     let body = res.json();
     return body.data || {};
   }
-  
-    updateUser(id, name): Observable<any> {
+
+    updateUser(id, idActivity): Observable<any> {
+      console.log(id);
+      console.log(idActivity);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    return this.http.put(SERVER_API_URL + 'api/update_user_activity/' + id + '/' + name, {}, options)
+    return this.http.put(SERVER_API_URL + 'api/update_user_activity/' + id + '/' + idActivity, {}, options)
       .map(this.extractData)
       .catch(this.handleError);
     }
-  
+
     private handleError(error: any) {
     // In a real world app, we might send the error to remote logging infrastructure
     let errMsg = error.message || 'Server error';
@@ -42,6 +44,6 @@ export class ActivityService {
     console.log(errMsg);
     return Observable.throw(errMsg);
   }
-  
-  
+
+
 }

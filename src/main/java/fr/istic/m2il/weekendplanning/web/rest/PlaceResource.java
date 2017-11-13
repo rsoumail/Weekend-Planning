@@ -46,15 +46,15 @@ public class PlaceResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
     
-    @PutMapping("/update_place")
-    @Produces("application/json")
-    public  ResponseEntity<Place> addPlace(){
-    	Place newplace = new Place();
-    	newplace.setNom("no");
-    	newplace.setCode("7606");
-    	placeRepository.save(newplace);
-        return new ResponseEntity<Place>(newplace, HttpStatus.OK);
-    }
+//    @PutMapping("/update_place")
+//    @Produces("application/json")
+//    public  ResponseEntity<Place> addPlace(){
+//    	Place newplace = new Place();
+//    	newplace.setNom("no");
+//    	newplace.setCode("7606");
+//    	placeRepository.save(newplace);
+//        return new ResponseEntity<Place>(newplace, HttpStatus.OK);
+//    }
     
     
 }

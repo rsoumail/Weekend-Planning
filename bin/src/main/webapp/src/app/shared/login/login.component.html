@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <h2>
+          Authentification
+    </h2>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <div class="alert alert-danger" *ngIf="authenticationError">
+      <strong>Echèc d'authentification!</strong>
+      <span>Veuillez Verifier vos informations et réessayez.</span>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <form name="form" role="form" (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="username">Identifiant</label>
+        <input type="text" class="form-control" [(ngModel)]="username" id="username" name="username"  placeholder="Votre Identifiant" required>
+        <!--div *ngIf="logi.dirty && logi.invalid">
+          <small class="form-text text-danger" *ngIf="logi.errors.required">
+            Votre identifiant est obligatoire.
+          </small>
+        </div-->
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" class="form-control" [(ngModel)]="password" id="password" name="password"  placeholder="Votre Mot de passe" required minlength="8">
+        <!--div *ngIf="password.dirty && password.invalid">
+          <small class="form-text text-danger" *ngIf="password.errors.required">
+    				Votre mot de passe est obligatoire.
+    			</small>
+          <small class="form-text text-danger" *ngIf="password.errors.minlength">
+    						Votre mot de passe doit contenir au moins 8 caractères.
+    					</small>
+        </div-->
+      </div>
+      <button type="submit" class="btn btn-success">Connexion</button>
+      <a class="alert-link" [routerLink]="['/inscription']">Inscription</a>
+    </form>
+    <div class="alert alert-warning">
+                <span>Pas encore de compte?</span>
+                <a class="alert-link" (click)="register()">S'inscrire</a>
+            </div>
+  </div>
+</div>

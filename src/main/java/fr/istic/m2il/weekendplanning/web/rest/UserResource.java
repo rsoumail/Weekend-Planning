@@ -206,8 +206,10 @@ public class UserResource {
 
 	@PutMapping("/update_user_activity/{id}/{idActivity}")
 	@Produces("application/json")
-	public ResponseEntity<User> updateUserActivity(@RequestBody Object p, @PathVariable Long id,
+	public ResponseEntity<User> updateUserActivity(@PathVariable Long id,
 			@PathVariable Long idActivity) {
+		System.out.println(idActivity);
+		System.out.println(id);
 		User user = userRepository.findOne(id);
 		Activity activity = activityRepository.findOne(idActivity);
 		List<Activity> activities = user.getActivities();

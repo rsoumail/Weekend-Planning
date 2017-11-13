@@ -39,4 +39,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u JOIN u.activities a JOIN u.places p WHERE a.name LIKE :aname AND p.nom LIKE :pname")
     List<User> findAllByActivityAndPlace(@Param("aname") String aname, @Param("pname") String pname);
+    
+   
 }
