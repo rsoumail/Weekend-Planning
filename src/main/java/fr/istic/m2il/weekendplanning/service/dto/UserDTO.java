@@ -39,6 +39,8 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private List<Place> places;
+
 
     public UserDTO() {
         // Empty constructor needed for Jackson.
@@ -47,18 +49,19 @@ public class UserDTO {
     public UserDTO(User user){
 
         this(user.getId(), user.getEmail(), user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getActivities(), user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet())
+            user.getActivities(), user.getPlaces(), user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet())
         );
 
     }
 
-    public UserDTO(Long id, String email, String login, String firstName, String lastName, List<Activity> activities, Set<String> authorities) {
+    public UserDTO(Long id, String email, String login, String firstName, String lastName, List<Activity> activities, List<Place> places, Set<String> authorities) {
         this.id = id;
         this.email = email;
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.activities = activities;
+        this.places = places;
         this.authorities = authorities;
     }
 
@@ -112,6 +115,18 @@ public class UserDTO {
 
     public Set<String> getAuthorities() {
         return authorities;
+    }
+
+    public void setAuthorities(Set<String> authorities) {
+        this.authorities = authorities;
+    }
+
+    public List<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(List<Place> places) {
+        this.places = places;
     }
 
     @Override

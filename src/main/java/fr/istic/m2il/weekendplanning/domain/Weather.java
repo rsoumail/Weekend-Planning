@@ -7,6 +7,7 @@ public class Weather {
 private FcstDay fcst_day_0;
 private FcstDay fcst_day_1;
 private FcstDay fcst_day_2;
+private FcstDay fcst_day_3;
 
     public FcstDay getFcst_day_0() {
         return fcst_day_0;
@@ -30,5 +31,13 @@ private FcstDay fcst_day_2;
 
     public void setFcst_day_2(FcstDay fcst_day_2) {
         this.fcst_day_2 = fcst_day_2;
+    }
+
+    public FcstDay getFcst_day_3() {
+        return fcst_day_3;
+    }
+
+    public void setFcst_day_3(FcstDay fcst_day_3) {
+        this.fcst_day_3 = fcst_day_3;
     }
 }

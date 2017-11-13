@@ -7,12 +7,13 @@ import org.apache.commons.lang3.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.TemplateEngine;
+//import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
@@ -35,19 +36,18 @@ public class MailService {
 
     //private final JHipsterProperties jHipsterProperties;
 
-    private final JavaMailSender javaMailSender;
+    //private final JavaMailSender javaMailSender;
 
     private final MessageSource messageSource;
 
-    private final SpringTemplateEngine templateEngine;
-
-    public MailService(JavaMailSender javaMailSender,
-                       MessageSource messageSource, TemplateEngine templateEngine) {
+    //private final SpringTemplateEngine templateEngine;*/
+    public MailService(/*JavaMailSender javaMailSender*/
+                       MessageSource messageSource /*SpringTemplateEngine templateEngine*/) {
 
        // this.jHipsterProperties = jHipsterProperties;
-        this.javaMailSender = javaMailSender;
+      /*  this.javaMailSender = javaMailSender;*/
         this.messageSource = messageSource;
-        this.templateEngine = templateEngine;
+        /*this.templateEngine = templateEngine;*/
     }
 
     @Async
@@ -56,11 +56,11 @@ public class MailService {
             isMultipart, isHtml, to, subject, content);
 
         // Prepare message using a Spring helper
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        /*MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, CharEncoding.UTF_8);
             message.setTo(to);
-            message.setFrom(jHipsterProperties.getMail().getFrom());
+            message.setFrom("weekendplanning@email.fr");
             message.setSubject(subject);
             message.setText(content, isHtml);
             javaMailSender.send(mimeMessage);
@@ -71,18 +71,18 @@ public class MailService {
             } else {
                 log.warn("Email could not be sent to user '{}': {}", to, e.getMessage());
             }
-        }
+        }*/
     }
 
     @Async
     public void sendEmailFromTemplate(User user, String templateName, String titleKey) {
-        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        /*Locale locale = Locale.forLanguageTag("fr");
         Context context = new Context(locale);
         context.setVariable(USER, user);
-        context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+        //context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
         String content = templateEngine.process(templateName, context);
         String subject = messageSource.getMessage(titleKey, null, locale);
-        sendEmail(user.getEmail(), subject, content, false, true);
+        sendEmail(user.getEmail(), subject, content, false, true);*/
 
     }
 
@@ -103,4 +103,6 @@ public class MailService {
         log.debug("Sending password reset email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, "passwordResetEmail", "email.reset.title");
     }
+
+
 }

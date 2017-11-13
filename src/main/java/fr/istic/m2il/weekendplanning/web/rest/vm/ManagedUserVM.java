@@ -1,6 +1,7 @@
 package fr.istic.m2il.weekendplanning.web.rest.vm;
 
 import fr.istic.m2il.weekendplanning.domain.Activity;
+import fr.istic.m2il.weekendplanning.domain.Place;
 import fr.istic.m2il.weekendplanning.service.dto.UserDTO;
 import javax.validation.constraints.Size;
 
@@ -24,10 +25,10 @@ public class ManagedUserVM extends UserDTO {
         // Empty constructor needed for Jackson.
     }
 
-    public ManagedUserVM(Long id, String email,  String login, String password, String firstName, String lastName,
-                        List<Activity> activities, Set<String> autorities) {
+    public ManagedUserVM(Long id, String email, String login, String password, String firstName, String lastName,
+                         List<Activity> activities, List<Place> places, Set<String> autorities) {
 
-        super(id, email, login, firstName, lastName, activities, autorities);
+        super(id, email, login, firstName, lastName, activities, places, autorities);
 
         this.password = password;
     }
