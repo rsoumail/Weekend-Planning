@@ -49,7 +49,6 @@ public class CityService {
                         for(Activity activity:activities){
                             List<User> receivers = userRepository.findAllByActivityAndPlace(activity.getName(), city.getNom());
                             for (User user : receivers) {
-                                log.info("Je send le mail");
                                 mailService.sendEmail(user.getEmail(), "WeekendPlanning Notification",
                                         "Nous vous conseillons de faire du/de la" + activity.getName() +
                                                 "Ce weekend en date de " + w.getFcst_day_3().getDate(), false, true);
