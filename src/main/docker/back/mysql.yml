@@ -8,7 +8,6 @@ services:
             - MYSQL_USER=weekendplanningadmin
             - MYSQL_USER_PASSWORD=weekendplanningadmin
             - MYSQL_DATABASE=weekendplanning
-        ports:
-        ##    - 3306:3306
+
         command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
 
