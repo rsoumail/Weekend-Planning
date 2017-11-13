@@ -23,23 +23,23 @@
 			Lancer la commande : docker build -t weekendplanning-back .
 
 3.
-	Création du réseau
+   Création du réseau pour les conteneurs 
 
 		Lancer la commande : docker netowrk create weekend-network
 	
 4.
-   Dans le dossier src/main/docker/frontend/
+   Dans le dossier weekendplanning/src/main/webapp/src/main/docker/frontend/
 
 	   Lancement d'un conteneur
 
 			Lancer la commande : docker-compose -f app.yml up
 
 
-	Dans le dossier src/main/docker/backend/
+   Dans le dossier weekendplanning/src/main/webapp/src/main/docker/backend/
 
 		Etendre un conteneur
 
-		Commande : docker-compose -f app.yml down
+		Lancer la commande : docker-compose -f app.yml down
 		
 
 ##PRESENTATION
