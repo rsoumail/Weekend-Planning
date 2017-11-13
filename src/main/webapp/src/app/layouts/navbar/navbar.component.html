@@ -6,12 +6,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [class.invisible]="isAuthenticated() === false">
     <ul class="navbar-nav mr-auto">
-      <!--li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li-->
-      <li ng-class='{nav-item: isAuthenticated(), invisible: !isAuthenticated()}'>
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/mes_lieux']">Mes Lieux</a>
       </li>
       <li class="nav-item">
@@ -20,12 +17,8 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/mes_notifications']">Mes Notifications</a>
       </li>
-      <!--li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li-->
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <!--input class="form-control mr-sm-2" type="text" placeholder="Rechercher" aria-label="Search"-->
       <button class="btn btn-outline-danger my-2 my-sm-0" (click)="logout()" >Se déconnecter</button>
     </form>
   </div>

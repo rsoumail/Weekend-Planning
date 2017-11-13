@@ -1,5 +1,5 @@
 export * from './event-manager.service';
-export * from './auth/state-storage.service';
+//export * from './auth/state-storage.service';
 export * from './auth/account.service';
 export * from './auth/principal.service';
 export * from './auth/auth-session.service';

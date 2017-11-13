@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LoginService } from './login.service';
-import { StateStorageService } from '../auth/state-storage.service';
+//import { StateStorageService } from '../auth/state-storage.service';
 import { EventManager } from '../event-manager.service'
 
 @Component({
@@ -70,5 +70,7 @@ export class LoginComponent implements OnInit {
         this.authenticationError = false;
         // this.activeModal.dismiss('cancel');
     }
+
+    register(){}
 
 }

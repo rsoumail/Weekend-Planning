@@ -28,7 +28,6 @@ export class NavbarComponent implements OnInit {
   }
 
   isAuthenticated() {
-      console.log("OKKKK");
       return this.principal.isAuthenticated();
   }
 

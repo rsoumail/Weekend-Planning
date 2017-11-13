@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 
 import { Principal } from './principal.service';
-import { StateStorageService } from './state-storage.service';
+//import { StateStorageService } from './state-storage.service';
 
 @Injectable()
 export class UserRouteAccessService implements CanActivate {
 
     constructor(private router: Router,
                 private principal: Principal,
-                private stateStorageService: StateStorageService) {
+              /*private stateStorageService: StateStorageService*/) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> {
@@ -40,7 +40,7 @@ export class UserRouteAccessService implements CanActivate {
               );
             }
 
-            this.stateStorageService.storeUrl(url);
+            //this.stateStorageService.storeUrl(url);
             this.router.navigate(['accessdenied']).then(() => {
                 // only show the login dialog, if the user hasn't logged in yet
                 if (!account) {
