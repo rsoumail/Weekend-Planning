@@ -42,7 +42,7 @@ export class PlaceComponent implements OnInit {
     console.log(this.selectedRegion.code);
     this.urlDepartements = PLACE_API_URL + 'regions/'.concat(this.selectedRegion.code).concat('/departements?fields=nom,code');
     this.http.get(this.urlDepartements).subscribe(data => this.listDepartements = data);
-    this.information = 'la region: '.concat(this.selectedRegion.nom);
+    this.information = 'region de '.concat(this.selectedRegion.nom);
     this.selected = this.selectedRegion;
     this.regionToCommunes(this.selectedRegion);
   }
@@ -51,7 +51,7 @@ export class PlaceComponent implements OnInit {
     console.log(this.selectedDep.code);
     this.urlCommunes = PLACE_API_URL + 'departements/'.concat(this.selectedDep.code).concat('/communes?fields=nom,code');
     this.http.get(this.urlCommunes).subscribe(data => this.listCommunes = data);
-    this.information = 'le departement: '.concat(this.selectedDep.nom);
+    this.information = 'departement de '.concat(this.selectedDep.nom);
     this.selected = this.selectedDep;
 
   }
@@ -59,7 +59,7 @@ export class PlaceComponent implements OnInit {
   infoCom() {
     this.http.get(this.urlInfo.concat(this.selectedCom.code))
       .subscribe(data => console.log(data));
-    this.information = 'la commune: '.concat(this.selectedCom.nom);
+    this.information = 'commune de '.concat(this.selectedCom.nom);
     this.selected = this.selectedCom;
 
   }
@@ -74,7 +74,7 @@ export class PlaceComponent implements OnInit {
   }
 
   isValidForm() {
-    return this.selected != null;
+    return this.selectedCom != null;
   }
 
   nextStep() {
@@ -114,6 +114,7 @@ export class PlaceComponent implements OnInit {
       this.getUserChoices();
       console.log(response);
       this.getUserChoices();
+      this.selectedCom = null;
     }, (response) => {
       console.log(response);
     });

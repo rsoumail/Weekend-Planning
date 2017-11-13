@@ -72,13 +72,13 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" >
     <div class="col-md-9">
-      <h4>Lieu Sélectionné: {{information}}</h4>
+      <h4 *ngIf="selected">Lieu Sélectionné : {{information}} </h4>
     </div>
   </div>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" >
     <div class="col-md-9">
       <button type="button" style="margin: 5px" (click)="updateUser()" [disabled]="!isValidForm()" class="float-right btn btn-primary">Ajouter</button>
     </div>
@@ -86,9 +86,9 @@
 
 
 
-  <div class="row justify-content-center">
+<!--  <div class="row justify-content-center">
     <div class="col-md-9">
       <button type="button" (click)="nextStep()" [disabled]="isEmpty()" class="float-right btn btn-primary">Etape suivante</button>
     </div>
-  </div>
+  </div> -->
 </div>
