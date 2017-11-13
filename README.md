@@ -21,6 +21,8 @@ Pour une activité il y a des contraintes meteologiques et geologiques. Exemple:
 	Activité voil : un peu de vent coté meteo mais, il faut de la flote coté lieu sinon il faut que notre BD contient uniquement des activités sans contraintes geologique
 
 ###############################################################################################################################
+##INSTALLATION
+
 PROJET TAA-GLI: Planification de week-ends
 
 Ce projet réalisé fait suite aux cours de TAA & GLI que nous avons eu en premier semestre. De ce fait nous étions amenée à mettre en place 
