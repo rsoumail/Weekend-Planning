@@ -1,5 +1,7 @@
 package fr.istic.m2il.weekendplanning.service;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -10,6 +12,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+@Service
 public class SendMailSSL {
 	
 	private Properties props = new Properties();
@@ -63,15 +66,5 @@ public class SendMailSSL {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	public static void main(String[] args) {
-		String sujet = "Testing mail service";
-		String text  =  "Du coup j'ai fais un service mail qui marche";
-		String to    = "waberi.houssein@gmail.com";
-		SendMailSSL mail = new SendMailSSL();
-		mail.setMessage(to, sujet, text);
-		mail.send();
-		System.out.println("Done!");
 
-	}
 }
