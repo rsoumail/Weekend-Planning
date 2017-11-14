@@ -13,7 +13,7 @@
    Application de frond end
 
 	   	Se placer dans le dossier weekendplanning/src/main/webapp/
-
+                Lancer la comande : npm install
 				Lancer la commande : npm start
 
    Application de back end
