@@ -25,7 +25,7 @@
 3.
    Création du réseau pour les conteneurs 
 
-		Lancer la commande : docker netowrk create weekend-network
+		Lancer la commande : docker network create weekend-network
 	
 4.
    Dans le dossier weekendplanning/src/main/docker/backend/
