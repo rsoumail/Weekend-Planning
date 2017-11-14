@@ -6,7 +6,7 @@ services:
     container_name: weekendplanning-mysql
     image: mysql
     volumes:
-      - /media/www-dev/public/weekendplanning/mysql:/var/lib/mysql
+      - /weekendplanning/mysql:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - weekend-network
