@@ -28,16 +28,9 @@
 		Lancer la commande : docker netowrk create weekend-network
 	
 4.
-   Dans le dossier weekendplanning/src/main/docker/frontend/
-
-	   Lancement d'un conteneur
-
-			Lancer la commande : docker-compose -f app.yml up
-
-
    Dans le dossier weekendplanning/src/main/docker/backend/
 
-		Etendre un conteneur
+		Lancer les containers
 
 		Lancer la commande : docker-compose -f app.yml down
 		
