@@ -18,12 +18,19 @@ export class ActivityComponent implements OnInit {
   selectedActivity = null;
   userChoices = new Set();
 
-  constructor(private ActivityService: ActivityService,
+  constructor(private activityService: ActivityService,
     private principal: Principal) {}
 
   ngOnInit() {
     this.getId();
     this.getAllPlaces();
+    this.activityService.getAll().subscribe((response) => {
+      console.log(response);
+      this.activities = response;
+    }, (response) => {
+      this.activities = {};
+      console.log(response);
+    });
   }
 
   AddActivity() {
@@ -36,7 +43,7 @@ export class ActivityComponent implements OnInit {
   }
 
   getUserActivities(id) {
-    this.ActivityService.getUserActivities(id).subscribe((response) => {
+    this.activityService.getUserActivities(id).subscribe((response) => {
       console.log(response);
       this.userActivities = response;
     }, (response) => {
@@ -57,7 +64,7 @@ export class ActivityComponent implements OnInit {
   }
 
   getAllPlaces() {
-    this.ActivityService.getAll().subscribe((response) => {
+    this.activityService.getAll().subscribe((response) => {
       console.log(response);
       this.activities = response;
     }, (response) => {
@@ -68,7 +75,7 @@ export class ActivityComponent implements OnInit {
 
 
   addActivity(){
-    this.ActivityService.updateUser(this.currentAccount, this.selectedActivity.id).subscribe((response) => {
+    this.activityService.updateUser(this.currentAccount, this.selectedActivity.id).subscribe((response) => {
       console.log(response);
       this.getUserActivities(this.currentAccount);
     }, (response) => {
