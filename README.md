@@ -12,9 +12,9 @@
 2.
    Application de frond end
 
-	   	Se placer dans le dossier weekendplanning/src/main/docker/
+	   	Se placer dans le dossier weekendplanning/src/main/webapp/
 
-				Lancer la commande : docker build -t weekendplanning-front .
+				Lancer la commande : npm start
 
    Application de back end
 
@@ -22,12 +22,6 @@
 
 			Lancer la commande : docker build -t weekendplanning-back .
 			
-   Proxy Nginx
-   
-        Se placer dans le dossier weekendplanning/src/main/webapp/nginx
-        
-            Lancer la commande : docker build -t weekendplanning-nginx .
-
 3.
    Création du réseau pour les conteneurs 
 

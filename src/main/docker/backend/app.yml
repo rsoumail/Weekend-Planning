@@ -1,12 +1,7 @@
 version: "2.1"
 services:
-  angular:
-    container_name: weekendplanning-app-front
-    image: weekendplanning-front
-    ports:
-      - "4200:4200"
-    networks:
-      - weekend-network
+
+
   mysql:
     container_name: weekendplanning-mysql
     image: mysql
@@ -22,26 +17,18 @@ services:
       - MYSQL_USER=weekendplanningadmin
       - MYSQL_PASSWORD=weekendplanningadmin
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-  nginx:
-    container_name: weekendplanning-app-nginx
-    image: weekendplanning-nginx
-    ports:
-      - "8080:80"
-    networks:
-      - weekend-network
-          # Map Nginx port 80 to the local machine's port 80
-
-    command: /bin/bash -c "nginx -g 'daemon off;'"
 
   spring:
     container_name: weekendplanning-app-back
     image: weekendplanning-back
-
+    ports:
+      - "8080:8080"
     networks:
-          - weekend-network
+      - weekend-network
 
     depends_on:
       - mysql
+
 networks:
   weekend-network:
     external: true
