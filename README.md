@@ -32,6 +32,10 @@
 
 		Lancer les containers
 
+		Lancer la commande : docker-compose -f app.yml up
+		
+		Stoper les containers
+		
 		Lancer la commande : docker-compose -f app.yml down
 		
 
