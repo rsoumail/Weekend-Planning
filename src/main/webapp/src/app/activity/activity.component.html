@@ -38,7 +38,7 @@
     <div class="col-md-8 form-group">
       <label>Choisir une activité</label>
       <select [(ngModel)]="selectedActivity" (change)="chargeActivite" class="form-control">
- 		 <option *ngFor="let activity of activities" [ngValue]="activity.name"> {{activity.name}} </option>
+ 		 <option *ngFor="let activity of activities" [ngValue]="activity"> {{activity.name}} </option>
 		</select>
     </div>
 
@@ -46,7 +46,7 @@
 
   <div class="row justify-content-center">
     <div class="col-md-8 form-group">
-      <span>Activité Sélectionné: {{selectedActivity}}</span>
+      <span>Activité Sélectionné: {{selectedActivity.name}}</span>
     </div>
 
   </div>
