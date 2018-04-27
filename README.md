@@ -1,9 +1,9 @@
-#PROJET TAA-GLI: Planification de week-ends
+# PROJET TAA-GLI: Planification de week-ends
 
 A web platform that advice users to plan their weekends according their preferences
 
 
-##INSTALLATION
+## INSTALLATION
 1.
    Builder le projet par
    
@@ -39,9 +39,13 @@ A web platform that advice users to plan their weekends according their preferen
 		Stoper les containers
 		
 		Lancer la commande : docker-compose -f app.yml down
-		
+## Resources
 
-##PRESENTATION
+- Java 
+- Spring
+- AngularJS
+
+## PRESENTATION
 
 Ce projet réalisé fait suite aux cours de TAA & GLI que nous avons eu en premier semestre. De ce fait nous étions amenée à mettre en place 
 les technologies recommandées par le projet. Pour celà nous avons réalisé l'architecture de l'application comme suite:
