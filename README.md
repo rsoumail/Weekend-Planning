@@ -2,6 +2,8 @@
 
 A web platform that advice users to plan their weekends according their preferences
 
+## Requirements
+- Docker
 
 ## Usage
 1. Build project
