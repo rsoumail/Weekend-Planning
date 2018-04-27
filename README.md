@@ -1,4 +1,4 @@
-# Weekend Planning : Planification de week-ends
+# Weekend Planning
 
 A web platform that advice users to plan their weekends according their preferences
 
