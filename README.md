@@ -1,4 +1,4 @@
-# PROJET TAA-GLI: Planification de week-ends
+# Weekend Plannig : Planification de week-ends
 
 A web platform that advice users to plan their weekends according their preferences
 
