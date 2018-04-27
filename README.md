@@ -3,42 +3,23 @@
 A web platform that advice users to plan their weekends according their preferences
 
 
-## INSTALLATION
-1.
-   Builder le projet par
-   
-   	Se placer à la racine du projet weekendplanning/
+## Usage
+1. Build project
+	On the project's root run the following command : mvn package
+  
+2. Run Front-End App 
+	On weekendplanning/src/main/webapp/ folder run following commands : 
+	- npm install
+	- npm start
 
-		Lancer la commande : mvn package
-
-2.
-   Application de frond end
-
-	   	Se placer dans le dossier weekendplanning/src/main/webapp/
-                Lancer la comande : npm install
-				Lancer la commande : npm start
-
-   Application de back end
-
-		Se placer dans le dossier weekendpalnning/target/
-
-			Lancer la commande : docker build -t weekendplanning-back .
-			
-3.
-   Création du réseau pour les conteneurs 
-
-		Lancer la commande : docker network create weekend-network
-	
-4.
-   Dans le dossier weekendplanning/src/main/docker/backend/
-
-		Lancer les containers
-
-		Lancer la commande : docker-compose -f app.yml up
-		
-		Stoper les containers
-		
-		Lancer la commande : docker-compose -f app.yml down
+3. Run BackendEnd App
+        
+	- On weekendpalnning/target/ folder run following command : docker build -t weekendplanning-back .
+	- Create network for containers : 
+		Run following command : docker network create weekend-network
+	- On weekendplanning/src/main/docker/backend/ folder run following command :
+		Runs Container : docker-compose -f app.yml up
+		Stops Containers : docker-compose -f app.yml down
 ## Resources
 
 - Java 
