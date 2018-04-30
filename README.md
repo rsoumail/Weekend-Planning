@@ -1,16 +1,16 @@
 # Weekend Planning
 
-A web platform that advice users to plan their weekends according their preferences
+A web platform that advices users to plan their weekend according their preferences
 
 ## Requirements
 - Docker
 
 ## Usage
 1. Build project
-	On the project's root run the following command : mvn package
+- On the project's root run the following command : mvn package
   
 2. Run Front-End App 
-	On weekendplanning/src/main/webapp/ folder run following commands : 
+- On weekendplanning/src/main/webapp/ folder run following commands : 
 	- npm install
 	- npm start
 
