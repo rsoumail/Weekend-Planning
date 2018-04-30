@@ -26,4 +26,4 @@ A web platform that advices users to plan their weekend according their preferen
 
 - Java 
 - Spring
-- AngularJS
+- Angular
